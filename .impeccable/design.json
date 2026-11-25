@@ -1,0 +1,745 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T10:50:17Z",
+  "title": "Design System: Check",
+  "extensions": {
+    "colorMeta": {
+      "rail-marino": {
+        "role": "primary",
+        "displayName": "Azul marino institucional",
+        "tonalRamp": [
+          "oklch(15% 0.040 264)",
+          "oklch(26% 0.064 264)",
+          "oklch(37% 0.080 264)",
+          "oklch(48% 0.088 264)",
+          "oklch(59% 0.090 264)",
+          "oklch(70% 0.083 264)",
+          "oklch(82% 0.067 264)",
+          "oklch(95% 0.040 264)"
+        ]
+      },
+      "rail-marino-hover": {
+        "role": "primary",
+        "displayName": "Azul marino institucional (hover)",
+        "tonalRamp": [
+          "oklch(15% 0.045 264)",
+          "oklch(26% 0.071 264)",
+          "oklch(37% 0.089 264)",
+          "oklch(48% 0.098 264)",
+          "oklch(59% 0.099 264)",
+          "oklch(70% 0.092 264)",
+          "oklch(82% 0.075 264)",
+          "oklch(95% 0.045 264)"
+        ]
+      },
+      "texto-sobre-acento": {
+        "role": "neutral",
+        "displayName": "Texto sobre acento",
+        "tonalRamp": [
+          "oklch(15% 0.000 0)",
+          "oklch(26% 0.000 0)",
+          "oklch(37% 0.000 0)",
+          "oklch(48% 0.000 0)",
+          "oklch(59% 0.000 0)",
+          "oklch(70% 0.000 0)",
+          "oklch(82% 0.000 0)",
+          "oklch(95% 0.000 0)"
+        ]
+      },
+      "azul-enlace": {
+        "role": "primary",
+        "displayName": "Azul de enlace",
+        "tonalRamp": [
+          "oklch(15% 0.058 266)",
+          "oklch(26% 0.092 266)",
+          "oklch(37% 0.115 266)",
+          "oklch(48% 0.128 266)",
+          "oklch(59% 0.129 266)",
+          "oklch(70% 0.120 266)",
+          "oklch(82% 0.097 266)",
+          "oklch(95% 0.058 266)"
+        ]
+      },
+      "sello-rojo": {
+        "role": "secondary",
+        "displayName": "Rojo de sello",
+        "tonalRamp": [
+          "oklch(15% 0.076 27)",
+          "oklch(26% 0.121 27)",
+          "oklch(37% 0.151 27)",
+          "oklch(48% 0.167 27)",
+          "oklch(59% 0.169 27)",
+          "oklch(70% 0.157 27)",
+          "oklch(82% 0.127 27)",
+          "oklch(95% 0.076 27)"
+        ]
+      },
+      "sello-azul": {
+        "role": "secondary",
+        "displayName": "Azul tinta de sello",
+        "tonalRamp": [
+          "oklch(15% 0.058 266)",
+          "oklch(26% 0.092 266)",
+          "oklch(37% 0.115 266)",
+          "oklch(48% 0.128 266)",
+          "oklch(59% 0.129 266)",
+          "oklch(70% 0.120 266)",
+          "oklch(82% 0.097 266)",
+          "oklch(95% 0.058 266)"
+        ]
+      },
+      "ambar": {
+        "role": "tertiary",
+        "displayName": "Ámbar de aviso",
+        "tonalRamp": [
+          "oklch(15% 0.058 62)",
+          "oklch(26% 0.092 62)",
+          "oklch(37% 0.115 62)",
+          "oklch(48% 0.128 62)",
+          "oklch(59% 0.129 62)",
+          "oklch(70% 0.120 62)",
+          "oklch(82% 0.097 62)",
+          "oklch(95% 0.058 62)"
+        ]
+      },
+      "papel": {
+        "role": "neutral",
+        "displayName": "Papel frío",
+        "tonalRamp": [
+          "oklch(15% 0.003 115)",
+          "oklch(26% 0.004 115)",
+          "oklch(37% 0.005 115)",
+          "oklch(48% 0.006 115)",
+          "oklch(59% 0.006 115)",
+          "oklch(70% 0.006 115)",
+          "oklch(82% 0.004 115)",
+          "oklch(95% 0.003 115)"
+        ]
+      },
+      "blanco": {
+        "role": "neutral",
+        "displayName": "Blanco de campo",
+        "tonalRamp": [
+          "oklch(15% 0.000 0)",
+          "oklch(26% 0.000 0)",
+          "oklch(37% 0.000 0)",
+          "oklch(48% 0.000 0)",
+          "oklch(59% 0.000 0)",
+          "oklch(70% 0.000 0)",
+          "oklch(82% 0.000 0)",
+          "oklch(95% 0.000 0)"
+        ]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "tonalRamp": [
+          "oklch(15% 0.004 260)",
+          "oklch(26% 0.007 260)",
+          "oklch(37% 0.009 260)",
+          "oklch(48% 0.010 260)",
+          "oklch(59% 0.010 260)",
+          "oklch(70% 0.009 260)",
+          "oklch(82% 0.007 260)",
+          "oklch(95% 0.004 260)"
+        ]
+      },
+      "tinta-2": {
+        "role": "neutral",
+        "displayName": "Tinta segunda",
+        "tonalRamp": [
+          "oklch(15% 0.013 262)",
+          "oklch(26% 0.021 262)",
+          "oklch(37% 0.027 262)",
+          "oklch(48% 0.029 262)",
+          "oklch(59% 0.030 262)",
+          "oklch(70% 0.028 262)",
+          "oklch(82% 0.022 262)",
+          "oklch(95% 0.013 262)"
+        ]
+      },
+      "tinta-3": {
+        "role": "neutral",
+        "displayName": "Tinta tercera",
+        "tonalRamp": [
+          "oklch(15% 0.011 262)",
+          "oklch(26% 0.018 262)",
+          "oklch(37% 0.022 262)",
+          "oklch(48% 0.025 262)",
+          "oklch(59% 0.025 262)",
+          "oklch(70% 0.023 262)",
+          "oklch(82% 0.019 262)",
+          "oklch(95% 0.011 262)"
+        ]
+      },
+      "filete": {
+        "role": "neutral",
+        "displayName": "Filete",
+        "tonalRamp": [
+          "oklch(15% 0.007 258)",
+          "oklch(26% 0.011 258)",
+          "oklch(37% 0.013 258)",
+          "oklch(48% 0.015 258)",
+          "oklch(59% 0.015 258)",
+          "oklch(70% 0.014 258)",
+          "oklch(82% 0.011 258)",
+          "oklch(95% 0.007 258)"
+        ]
+      },
+      "borde-campo": {
+        "role": "neutral",
+        "displayName": "Borde de campo",
+        "tonalRamp": [
+          "oklch(15% 0.009 260)",
+          "oklch(26% 0.014 260)",
+          "oklch(37% 0.018 260)",
+          "oklch(48% 0.020 260)",
+          "oklch(59% 0.020 260)",
+          "oklch(70% 0.018 260)",
+          "oklch(82% 0.015 260)",
+          "oklch(95% 0.009 260)"
+        ]
+      },
+      "papel-oscuro": {
+        "role": "neutral",
+        "displayName": "Pizarra (papel oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.009 258)",
+          "oklch(26% 0.014 258)",
+          "oklch(37% 0.018 258)",
+          "oklch(48% 0.020 258)",
+          "oklch(59% 0.020 258)",
+          "oklch(70% 0.018 258)",
+          "oklch(82% 0.015 258)",
+          "oklch(95% 0.009 258)"
+        ]
+      },
+      "blanco-oscuro": {
+        "role": "neutral",
+        "displayName": "Campo oscuro",
+        "tonalRamp": [
+          "oklch(15% 0.011 258)",
+          "oklch(26% 0.018 258)",
+          "oklch(37% 0.022 258)",
+          "oklch(48% 0.025 258)",
+          "oklch(59% 0.025 258)",
+          "oklch(70% 0.023 258)",
+          "oklch(82% 0.019 258)",
+          "oklch(95% 0.011 258)"
+        ]
+      },
+      "tinta-oscuro": {
+        "role": "neutral",
+        "displayName": "Tinta clara (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.004 260)",
+          "oklch(26% 0.007 260)",
+          "oklch(37% 0.009 260)",
+          "oklch(48% 0.010 260)",
+          "oklch(59% 0.010 260)",
+          "oklch(70% 0.009 260)",
+          "oklch(82% 0.007 260)",
+          "oklch(95% 0.004 260)"
+        ]
+      },
+      "tinta-2-oscuro": {
+        "role": "neutral",
+        "displayName": "Tinta segunda (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.009 260)",
+          "oklch(26% 0.014 260)",
+          "oklch(37% 0.018 260)",
+          "oklch(48% 0.020 260)",
+          "oklch(59% 0.020 260)",
+          "oklch(70% 0.018 260)",
+          "oklch(82% 0.015 260)",
+          "oklch(95% 0.009 260)"
+        ]
+      },
+      "tinta-3-oscuro": {
+        "role": "neutral",
+        "displayName": "Tinta tercera (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.011 260)",
+          "oklch(26% 0.018 260)",
+          "oklch(37% 0.022 260)",
+          "oklch(48% 0.025 260)",
+          "oklch(59% 0.025 260)",
+          "oklch(70% 0.023 260)",
+          "oklch(82% 0.019 260)",
+          "oklch(95% 0.011 260)"
+        ]
+      },
+      "filete-oscuro": {
+        "role": "neutral",
+        "displayName": "Filete (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.011 258)",
+          "oklch(26% 0.018 258)",
+          "oklch(37% 0.022 258)",
+          "oklch(48% 0.025 258)",
+          "oklch(59% 0.025 258)",
+          "oklch(70% 0.023 258)",
+          "oklch(82% 0.019 258)",
+          "oklch(95% 0.011 258)"
+        ]
+      },
+      "borde-campo-oscuro": {
+        "role": "neutral",
+        "displayName": "Borde de campo (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.016 258)",
+          "oklch(26% 0.025 258)",
+          "oklch(37% 0.031 258)",
+          "oklch(48% 0.034 258)",
+          "oklch(59% 0.035 258)",
+          "oklch(70% 0.032 258)",
+          "oklch(82% 0.026 258)",
+          "oklch(95% 0.016 258)"
+        ]
+      },
+      "acento-oscuro": {
+        "role": "primary",
+        "displayName": "Azul marino (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.054 266)",
+          "oklch(26% 0.085 266)",
+          "oklch(37% 0.107 266)",
+          "oklch(48% 0.118 266)",
+          "oklch(59% 0.119 266)",
+          "oklch(70% 0.111 266)",
+          "oklch(82% 0.090 266)",
+          "oklch(95% 0.054 266)"
+        ]
+      },
+      "azul-enlace-oscuro": {
+        "role": "primary",
+        "displayName": "Azul de enlace (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.049 268)",
+          "oklch(26% 0.078 268)",
+          "oklch(37% 0.098 268)",
+          "oklch(48% 0.108 268)",
+          "oklch(59% 0.109 268)",
+          "oklch(70% 0.101 268)",
+          "oklch(82% 0.082 268)",
+          "oklch(95% 0.049 268)"
+        ]
+      },
+      "sello-rojo-oscuro": {
+        "role": "secondary",
+        "displayName": "Rojo de sello (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.067 25)",
+          "oklch(26% 0.106 25)",
+          "oklch(37% 0.133 25)",
+          "oklch(48% 0.147 25)",
+          "oklch(59% 0.149 25)",
+          "oklch(70% 0.138 25)",
+          "oklch(82% 0.112 25)",
+          "oklch(95% 0.067 25)"
+        ]
+      },
+      "ambar-oscuro": {
+        "role": "tertiary",
+        "displayName": "Ámbar de aviso (oscuro)",
+        "tonalRamp": [
+          "oklch(15% 0.058 72)",
+          "oklch(26% 0.092 72)",
+          "oklch(37% 0.115 72)",
+          "oklch(48% 0.128 72)",
+          "oklch(59% 0.129 72)",
+          "oklch(70% 0.120 72)",
+          "oklch(82% 0.097 72)",
+          "oklch(95% 0.058 72)"
+        ]
+      },
+      "asig-rojo": {
+        "role": "asignatura",
+        "displayName": "Asignatura · rojo",
+        "tonalRamp": [
+          "oklch(15% 0.072 30)",
+          "oklch(26% 0.113 30)",
+          "oklch(37% 0.142 30)",
+          "oklch(48% 0.157 30)",
+          "oklch(59% 0.159 30)",
+          "oklch(70% 0.148 30)",
+          "oklch(82% 0.120 30)",
+          "oklch(95% 0.072 30)"
+        ]
+      },
+      "asig-naranja": {
+        "role": "asignatura",
+        "displayName": "Asignatura · naranja",
+        "tonalRamp": [
+          "oklch(15% 0.063 55)",
+          "oklch(26% 0.099 55)",
+          "oklch(37% 0.124 55)",
+          "oklch(48% 0.138 55)",
+          "oklch(59% 0.139 55)",
+          "oklch(70% 0.129 55)",
+          "oklch(82% 0.105 55)",
+          "oklch(95% 0.063 55)"
+        ]
+      },
+      "asig-amarillo": {
+        "role": "asignatura",
+        "displayName": "Asignatura · amarillo",
+        "tonalRamp": [
+          "oklch(15% 0.054 88)",
+          "oklch(26% 0.085 88)",
+          "oklch(37% 0.107 88)",
+          "oklch(48% 0.118 88)",
+          "oklch(59% 0.119 88)",
+          "oklch(70% 0.111 88)",
+          "oklch(82% 0.090 88)",
+          "oklch(95% 0.054 88)"
+        ]
+      },
+      "asig-verde": {
+        "role": "asignatura",
+        "displayName": "Asignatura · verde",
+        "tonalRamp": [
+          "oklch(15% 0.054 152)",
+          "oklch(26% 0.085 152)",
+          "oklch(37% 0.107 152)",
+          "oklch(48% 0.118 152)",
+          "oklch(59% 0.119 152)",
+          "oklch(70% 0.111 152)",
+          "oklch(82% 0.090 152)",
+          "oklch(95% 0.054 152)"
+        ]
+      },
+      "asig-cian": {
+        "role": "asignatura",
+        "displayName": "Asignatura · cian",
+        "tonalRamp": [
+          "oklch(15% 0.045 215)",
+          "oklch(26% 0.071 215)",
+          "oklch(37% 0.089 215)",
+          "oklch(48% 0.098 215)",
+          "oklch(59% 0.099 215)",
+          "oklch(70% 0.092 215)",
+          "oklch(82% 0.075 215)",
+          "oklch(95% 0.045 215)"
+        ]
+      },
+      "asig-azul": {
+        "role": "asignatura",
+        "displayName": "Asignatura · azul",
+        "tonalRamp": [
+          "oklch(15% 0.072 262)",
+          "oklch(26% 0.113 262)",
+          "oklch(37% 0.142 262)",
+          "oklch(48% 0.157 262)",
+          "oklch(59% 0.159 262)",
+          "oklch(70% 0.148 262)",
+          "oklch(82% 0.120 262)",
+          "oklch(95% 0.072 262)"
+        ]
+      },
+      "asig-morado": {
+        "role": "asignatura",
+        "displayName": "Asignatura · morado",
+        "tonalRamp": [
+          "oklch(15% 0.076 295)",
+          "oklch(26% 0.121 295)",
+          "oklch(37% 0.151 295)",
+          "oklch(48% 0.167 295)",
+          "oklch(59% 0.169 295)",
+          "oklch(70% 0.157 295)",
+          "oklch(82% 0.127 295)",
+          "oklch(95% 0.076 295)"
+        ]
+      },
+      "asig-rosa": {
+        "role": "asignatura",
+        "displayName": "Asignatura · rosa",
+        "tonalRamp": [
+          "oklch(15% 0.067 355)",
+          "oklch(26% 0.106 355)",
+          "oklch(37% 0.133 355)",
+          "oklch(48% 0.147 355)",
+          "oklch(59% 0.149 355)",
+          "oklch(70% 0.138 355)",
+          "oklch(82% 0.112 355)",
+          "oklch(95% 0.067 355)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Título del documento de cada pestaña (fecha grande en Hoy). 1.7em en hoja estrecha."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Título de las ventanas, sobre un filete de 2 px en tinta."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombre «Check» en el raíl."
+      },
+      "cifra": {
+        "displayName": "Cifra",
+        "purpose": "Días que faltan en la línea de tiempo y el registro de entregas; siempre tabular."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base de la interfaz; el usuario la ajusta de 12 a 20 px (--font-text-size)."
+      },
+      "body-fila": {
+        "displayName": "Body de fila",
+        "purpose": "Descripción de una tarea en la tabla."
+      },
+      "fecha": {
+        "displayName": "Fecha",
+        "purpose": "Columna de fecha, plazos y números de día; cifras tabulares."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Versalitas espaciadas en MAYÚSCULAS: cabeceras de columna, secciones, grupos, semanas."
+      },
+      "sello": {
+        "displayName": "Sello",
+        "purpose": "HECHO / ATRASADA / ANULADA en MAYÚSCULAS dentro del sello de caucho."
+      },
+      "etiqueta": {
+        "displayName": "Etiqueta",
+        "purpose": "Sigla de asignatura en su recuadro de color."
+      },
+      "nombre": {
+        "displayName": "Nombre",
+        "purpose": "Nombre de la tarea en la ventana de añadir, en un campo sin caja de 40 px."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Solo rutas de archivo."
+      }
+    },
+    "shadows": [
+      {
+        "name": "flotante",
+        "value": "0 18px 40px -14px rgba(16, 26, 48, 0.42)",
+        "purpose": "Menús, ventanas, el selector de fecha y avisos en tema claro; siempre con borde de 1 px en tinta."
+      },
+      {
+        "name": "flotante-oscuro",
+        "value": "0 18px 44px -12px rgba(0, 0, 0, 0.7)",
+        "purpose": "Lo mismo en tema oscuro."
+      }
+    ],
+    "motion": [
+      {
+        "name": "sello-golpe",
+        "value": "120ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "El sello cae al marcar: de rotate(-11deg) scale(1.7) blur(1.5px) a rotate(-4deg) scale(1)."
+      },
+      {
+        "name": "modal-entra",
+        "value": "160ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Ventanas y avisos suben 8 px y aparecen; el selector de fecha usa la misma entrada en 140 ms."
+      },
+      {
+        "name": "casilla-pulsada",
+        "value": "90ms ease-out",
+        "purpose": "La casilla se encoge a 0.88 al marcar."
+      },
+      {
+        "name": "despliegue",
+        "value": "120ms ease-out",
+        "purpose": "Triángulo de los desplegables y escala de las marcas del eje en hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "1ms",
+        "purpose": "Con prefers-reduced-motion todas las animaciones y transiciones quedan en 1 ms."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "hoja-estrecha",
+        "value": "760px",
+        "purpose": "Ancho de la hoja (no de la ventana) por debajo del cual se quita .pt-ancho."
+      },
+      {
+        "name": "rail-iconos",
+        "value": "900px",
+        "purpose": "Ventana por debajo de 900 px: raíl de 64 px solo con iconos."
+      }
+    ],
+    "runtimeOverrides": {
+      "--interactive-accent": "Color principal elegido por el usuario (main.ts aplicarTema); hover = color-mix 82% hacia negro (claro) o blanco (oscuro); --text-on-accent por luminancia.",
+      "--font-text-size": "Tamaño de texto del usuario, 12–20 px; --font-ui-small = 0.87×.",
+      "--rail-texto": "Claro: var(--text-on-accent); oscuro: #e3e8f3. --rail-tenue = color-mix(in srgb, var(--rail-texto) 78% (74% oscuro), var(--rail)); lavados del raíl = color-mix(in srgb, var(--rail-texto) N%, transparent).",
+      "--tarea-color": "Color de la asignatura, puesto en línea por fila, etiqueta, clase, marca y barra."
+    }
+  },
+  "components": [
+    {
+      "name": "Botón",
+      "kind": "button",
+      "refersTo": "boton",
+      "description": "Botón por defecto: recto, con borde, sobre blanco.",
+      "html": "<button class=\"ds-boton\">Cancelar</button>",
+      "css": ".ds-boton { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; font-size: 13.5px; font-weight: 600; height: 34px; padding: 0 14px; border: 1px solid var(--borde-campo, #a9b0bd); border-radius: 2px; background: var(--blanco, #ffffff); color: var(--tinta, #17191c); cursor: pointer; } .ds-boton:hover { background: color-mix(in srgb, var(--tinta, #17191c) 6%, var(--blanco, #ffffff)); } .ds-boton:focus-visible { outline: 2px solid var(--text-accent, #2b4c9b); outline-offset: 2px; }"
+    },
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "boton-cta",
+      "description": "Acción principal de una ventana, en el color principal elegido por el usuario.",
+      "html": "<button class=\"ds-boton-cta\">Guardar</button>",
+      "css": ".ds-boton-cta { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; font-size: 13.5px; font-weight: 600; height: 34px; padding: 0 14px; border: 1px solid var(--interactive-accent, #1b2d5b); border-radius: 2px; background: var(--interactive-accent, #1b2d5b); color: var(--text-on-accent, #ffffff); cursor: pointer; } .ds-boton-cta:hover { background: var(--interactive-accent-hover, #24396f); border-color: var(--interactive-accent-hover, #24396f); } .ds-boton-cta:focus-visible { outline: 2px solid var(--text-accent, #2b4c9b); outline-offset: 2px; }"
+    },
+    {
+      "name": "Línea de añadir",
+      "kind": "input",
+      "refersTo": "linea-anadir",
+      "description": "La acción principal y mínima: «Nueva tarea», la tecla del atajo (se oculta al escribir), un botón de deslizadores que abre la ventana de añadir y, debajo, una sola línea de texto con lo entendido.",
+      "html": "<div class=\"ds-rapido-caja\"><label class=\"ds-rapido\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg><input placeholder=\"Nueva tarea\" value=\"memoria RIS mañana 23:59 alta\"><kbd class=\"ds-oculto\">Ctrl N</kbd><button class=\"ds-rapido-mas\" type=\"button\" aria-label=\"Más opciones\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4\"/></svg></button></label><div class=\"ds-rapido-previa\"><b>Memoria</b> · RIS · mié 25 nov · 23:59 · alta</div></div>",
+      "css": ".ds-rapido-caja { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; font-size: 15px; } .ds-rapido { display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 12px; border: 1.5px solid var(--tinta, #17191c); border-radius: 2px; background: var(--blanco, #ffffff); color: var(--tinta-2, #4a5160); cursor: text; } .ds-rapido:focus-within { outline: 3px solid color-mix(in srgb, var(--text-accent, #2b4c9b) 35%, transparent); } .ds-rapido input { flex: 1; min-width: 0; height: 100%; padding: 0; border: none; background: transparent; font: inherit; color: var(--tinta, #17191c); outline: none; } .ds-rapido input::placeholder { color: var(--tinta-3, #646b7a); } .ds-rapido kbd { flex: none; padding: 1px 7px; border: 1px solid var(--filete, #d9dee7); border-bottom-width: 2px; border-radius: 3px; font: 650 11.5px \"Public Sans\", system-ui, sans-serif; color: var(--tinta-2, #4a5160); background: var(--papel, #f6f7f4); } .ds-rapido .ds-oculto { display: none; } .ds-rapido-mas { flex: none; width: 32px; height: 32px; margin-right: -6px; padding: 0; display: grid; place-items: center; border: none; border-radius: 2px; background: transparent; color: var(--tinta-3, #646b7a); cursor: pointer; } .ds-rapido-mas:hover { background: rgba(23, 25, 28, 0.045); color: var(--tinta, #17191c); } .ds-rapido-mas:focus-visible { outline: 2px solid var(--text-accent, #2b4c9b); outline-offset: 1px; } .ds-rapido-previa { margin-top: 6px; padding-left: 2px; font-size: 0.84em; color: var(--tinta-2, #4a5160); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; } .ds-rapido-previa b { font-weight: 650; color: var(--tinta, #17191c); }"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "campo",
+      "description": "Campo de texto, fecha, hora o selector.",
+      "html": "<input class=\"ds-campo\" type=\"text\" value=\"Memoria final\">",
+      "css": ".ds-campo { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; font-size: 14.25px; height: 36px; padding: 0 10px; border: 1px solid var(--borde-campo, #a9b0bd); border-radius: 2px; background: var(--blanco, #ffffff); color: var(--tinta, #17191c); } .ds-campo:focus { outline: 2px solid var(--text-accent, #2b4c9b); outline-offset: 1px; border-color: transparent; }"
+    },
+    {
+      "name": "Raíl institucional",
+      "kind": "nav",
+      "refersTo": "rail",
+      "description": "Navegación lateral en el color principal: pestañas con contador y leyenda de asignaturas.",
+      "html": "<nav class=\"ds-rail\"><button class=\"ds-rail-pestana ds-activa\"><span>Hoy</span><span class=\"ds-rail-cuenta ds-roja\">3</span></button><button class=\"ds-rail-pestana\"><span>Entregas</span><span class=\"ds-rail-cuenta\">7</span></button><button class=\"ds-rail-pestana\"><span>Calendario</span><span class=\"ds-rail-cuenta\"></span></button></nav>",
+      "css": ".ds-rail { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; --ds-rail: var(--interactive-accent, #1b2d5b); --ds-rail-texto: var(--text-on-accent, #ffffff); --ds-rail-tenue: color-mix(in srgb, var(--ds-rail-texto) 78%, var(--ds-rail)); width: 232px; padding: 12px 0; background: var(--ds-rail); color: var(--ds-rail-texto); display: flex; flex-direction: column; } .ds-rail-pestana { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; padding: 10px 20px; border: none; border-radius: 0; background: transparent; color: var(--ds-rail-tenue); font: 500 14.25px \"Public Sans\", system-ui, sans-serif; text-align: left; cursor: pointer; } .ds-rail-pestana:hover { background: color-mix(in srgb, var(--ds-rail-texto) 6%, transparent); color: var(--ds-rail-texto); } .ds-rail-pestana:focus-visible { outline: 2px solid var(--ds-rail-texto); outline-offset: -2px; } .ds-rail-pestana.ds-activa { background: color-mix(in srgb, var(--ds-rail-texto) 13%, transparent); color: var(--ds-rail-texto); font-weight: 700; } .ds-rail-cuenta { min-width: 22px; padding: 0 5px; border: 1px solid var(--ds-rail-tenue); border-radius: 2px; font-size: 11.7px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; } .ds-rail-cuenta:empty { display: none; } .ds-rail-cuenta.ds-roja { background: #c8372d; border-color: #c8372d; color: #ffffff; }"
+    },
+    {
+      "name": "Fila de la tabla oficial",
+      "kind": "custom",
+      "refersTo": "fila",
+      "description": "Una tarea fechada en la tabla de filetes: casilla, fecha, asignatura, tarea y plazo o sello.",
+      "html": "<div class=\"ds-fila\" tabindex=\"0\"><button class=\"ds-casilla\" aria-label=\"Marcar\"></button><span class=\"ds-fecha\">12 nov</span><span class=\"ds-etiqueta\">TFM</span><span class=\"ds-desc\">Entregar el borrador del capítulo 2</span><span class=\"ds-plazo\">viernes 23:59</span></div>",
+      "css": ".ds-fila { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; display: grid; grid-template-columns: 26px 70px 68px minmax(0, 1fr) 132px; gap: 12px; align-items: center; min-height: 48px; padding: 8px 6px; border-bottom: 1px solid var(--filete, #d9dee7); color: var(--tinta, #17191c); font-size: 15px; cursor: pointer; --tarea-color: #6d3fb5; } .ds-fila:hover { background: rgba(23, 25, 28, 0.045); } .ds-fila:focus-visible { outline: 2px solid var(--text-accent, #2b4c9b); outline-offset: -2px; } .ds-casilla { width: 20px; height: 20px; padding: 0; border: 1.5px solid var(--tinta, #17191c); border-radius: 2px; background: var(--blanco, #ffffff); cursor: pointer; } .ds-casilla:hover { border-color: var(--text-accent, #2b4c9b); } .ds-fecha { font-size: 0.9em; font-weight: 650; font-variant-numeric: tabular-nums; } .ds-etiqueta { justify-self: start; padding: 1px 6px; border: 1.5px solid currentColor; border-radius: 2px; font-size: 0.74em; font-weight: 750; letter-spacing: 0.04em; color: var(--tarea-color); background: color-mix(in srgb, var(--tarea-color) 7%, transparent); } .ds-desc { font-weight: 520; line-height: 1.35; } .ds-plazo { justify-self: end; font-size: 0.88em; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--ambar, #8f5600); }"
+    },
+    {
+      "name": "Sello de caucho",
+      "kind": "chip",
+      "refersTo": "sello-hecho",
+      "description": "Firma del sistema: el estado estampado, girado −4°, con el golpe de 120 ms.",
+      "html": "<span class=\"ds-sello ds-sello-azul\">HECHO</span> <span class=\"ds-sello ds-sello-rojo\">ATRASADA</span> <span class=\"ds-sello ds-sello-gris\">ANULADA</span>",
+      "css": ".ds-sello { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; display: inline-block; padding: 2px 7px 1px; border: 2px solid currentColor; border-radius: 3px; font-size: 10.5px; font-weight: 850; letter-spacing: 0.14em; line-height: 1.3; transform: rotate(-4deg); opacity: 0.92; animation: ds-golpe 120ms cubic-bezier(0.16, 1, 0.3, 1) both; } .ds-sello-azul { color: var(--sello-azul, #2b4c9b); } .ds-sello-rojo { color: var(--sello-rojo, #b3261e); } .ds-sello-gris { color: var(--tinta-3, #646b7a); } @keyframes ds-golpe { from { transform: rotate(-11deg) scale(1.7); opacity: 0; filter: blur(1.5px); } to { transform: rotate(-4deg) scale(1); opacity: 0.92; filter: blur(0); } } @media (prefers-reduced-motion: reduce) { .ds-sello { animation-duration: 1ms; } }"
+    },
+    {
+      "name": "Registro de entregas",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Filas cerradas por su filete y un intervalo proporcional (máx. 72 px) cuando pasan 5 días o más. Dos entregas el mismo día solo comparten fecha; la celda lo indica en su title.",
+      "html": "<div class=\"ds-registro\"><div class=\"ds-reg-fila\"><span class=\"ds-reg-dias\"><b>2</b> días</span><span class=\"ds-reg-fecha\" title=\"Más de una entrega o examen ese día\">jue 26 nov<span class=\"ds-reg-hora\">23:59</span></span><span class=\"ds-tipo\">ENTREGA</span><span>Práctica 3</span></div><div class=\"ds-reg-hueco\" style=\"height:56px\"><span>7 días</span></div><div class=\"ds-reg-fila\"><span class=\"ds-reg-dias\"><b>9</b> días</span><span class=\"ds-reg-fecha\">jue 3 dic</span><span class=\"ds-tipo ds-tipo-examen\">EXAMEN</span><span>Parcial</span></div></div>",
+      "css": ".ds-registro { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; font-size: 15px; color: var(--tinta, #17191c); } .ds-reg-fila { display: grid; grid-template-columns: 74px 160px 68px minmax(0, 1fr); gap: 14px; align-items: center; min-height: 48px; padding: 8px 6px; border-bottom: 1px solid var(--filete, #d9dee7); } .ds-reg-fila:hover { background: rgba(23, 25, 28, 0.045); } .ds-reg-dias { text-align: right; white-space: nowrap; font-size: 11px; color: var(--tinta-2, #4a5160); } .ds-reg-dias b { font-size: 22px; font-weight: 800; color: var(--tinta, #17191c); font-variant-numeric: tabular-nums; } .ds-reg-fecha { white-space: nowrap; font-size: 0.9em; font-weight: 650; font-variant-numeric: tabular-nums; } .ds-reg-hora { margin-left: 6px; color: var(--tinta-2, #4a5160); font-weight: 600; } .ds-reg-hora::before { content: \"· \"; } .ds-reg-hueco { display: flex; align-items: center; margin-left: 52px; padding-left: 92px; border-left: 1px dashed var(--borde-campo, #a9b0bd); font-size: 11px; color: var(--tinta-3, #646b7a); font-variant-numeric: tabular-nums; } .ds-tipo { display: inline-block; padding: 1px 7px; border: 1px solid var(--tinta-2, #4a5160); border-radius: 2px; font-size: 10.5px; font-weight: 750; letter-spacing: 0.1em; color: var(--tinta-2, #4a5160); } .ds-tipo-examen { border: 1.5px solid var(--tinta, #17191c); color: var(--tinta, #17191c); }"
+    },
+    {
+      "name": "Etiqueta de tipo",
+      "kind": "chip",
+      "refersTo": "tipo-examen",
+      "description": "Distingue examen de entrega en el registro: el examen sube a borde de 1.5 px en tinta, sin relleno.",
+      "html": "<span class=\"ds-tipo\">ENTREGA</span> <span class=\"ds-tipo ds-tipo-examen\">EXAMEN</span>",
+      "css": ".ds-tipo { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; display: inline-block; padding: 1px 7px; border: 1px solid var(--tinta-2, #4a5160); border-radius: 2px; font-size: 10.5px; font-weight: 750; letter-spacing: 0.1em; color: var(--tinta-2, #4a5160); } .ds-tipo-examen { border: 1.5px solid var(--tinta, #17191c); color: var(--tinta, #17191c); }"
+    },
+    {
+      "name": "Cabecera de documento",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Título del documento con sus datos a la derecha, cerrada por el filete de 2 px en tinta.",
+      "html": "<header class=\"ds-cabecera\"><h1>Martes, 24 de noviembre</h1><div class=\"ds-datos\"><div>Primer cuatrimestre</div><div>Semana 10 de 15</div></div></header>",
+      "css": ".ds-cabecera { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--tinta, #17191c); color: var(--tinta, #17191c); } .ds-cabecera h1 { margin: 0; font-size: 32px; font-weight: 750; letter-spacing: -0.02em; line-height: 1.08; } .ds-datos { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; font-size: 12.6px; color: var(--tinta-2, #4a5160); font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Ventana",
+      "kind": "card",
+      "refersTo": "modal",
+      "description": "Junto a menús y avisos, lo único que flota sobre la hoja y lleva sombra.",
+      "html": "<div class=\"ds-modal\"><h2>Ajustes</h2><p>Contenido de la ventana.</p></div>",
+      "css": ".ds-modal { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; width: min(580px, 100%); border: 1px solid var(--tinta, #17191c); border-radius: 3px; background: var(--papel, #f6f7f4); color: var(--tinta, #17191c); box-shadow: 0 18px 40px -14px rgba(16, 26, 48, 0.42); padding: 0 24px 22px; } .ds-modal h2 { margin: 0; padding: 22px 0 12px; border-bottom: 2px solid var(--tinta, #17191c); font-size: 20px; font-weight: 750; letter-spacing: -0.01em; } .ds-modal p { margin: 16px 0 0; font-size: 15px; color: var(--tinta-2, #4a5160); }"
+    },
+    {
+      "name": "Ventana de añadir",
+      "kind": "custom",
+      "refersTo": "rapida",
+      "description": "Crear o editar una tarea como menú de añadido rápido: nombre sin caja con lo reconocido resaltado en azul de sello, descripción que crece, opciones pulsables que toman su color al tener valor y un pie con la asignatura a la izquierda y Cancelar + botón principal a la derecha.",
+      "html": "<div class=\"ds-rapida\" role=\"dialog\" aria-label=\"Nueva tarea\"><button class=\"ds-rapida-cerrar\" type=\"button\" aria-label=\"Cerrar\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button><div class=\"ds-rapida-nombre\">Memoria final <mark>#RIS</mark> <mark>mañana</mark> <mark>23:59</mark></div><div class=\"ds-rapida-desc\">Descripción</div><div class=\"ds-rapida-chips\"><button class=\"ds-rapida-chip ds-con-valor\" type=\"button\" style=\"--chip-color: var(--sello-azul, #2b4c9b)\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/></svg><span>Mañana 23:59</span><span class=\"ds-rapida-quitar\" aria-label=\"Quitar fecha\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></span></button><button class=\"ds-rapida-chip ds-con-valor\" type=\"button\" style=\"--chip-color: var(--sello-rojo, #b3261e)\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/><path d=\"M4 22v-7\"/></svg><span>Alta</span><span class=\"ds-rapida-quitar\" aria-label=\"Quitar prioridad\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></span></button><button class=\"ds-rapida-chip\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m15 10 5 5-5 5\"/><path d=\"M4 4v7a4 4 0 0 0 4 4h12\"/></svg><span>Subtarea de…</span></button><button class=\"ds-rapida-chip ds-rapida-solo\" type=\"button\" aria-label=\"Más opciones\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"5\" cy=\"12\" r=\"1\"/><circle cx=\"12\" cy=\"12\" r=\"1\"/><circle cx=\"19\" cy=\"12\" r=\"1\"/></svg></button></div><div class=\"ds-rapida-pie\"><button class=\"ds-rapida-asig\" type=\"button\" aria-label=\"Asignatura\"><span class=\"ds-rapida-asig-color\"></span><span class=\"ds-rapida-asig-texto\">RIS · Robótica e Interacción Social</span><span class=\"ds-rapida-flecha\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></span></button><div class=\"ds-rapida-acciones\"><button class=\"ds-rapida-boton\" type=\"button\">Cancelar</button><button class=\"ds-rapida-boton ds-rapida-ok\" type=\"button\">Añadir tarea</button></div></div></div>",
+      "css": ".ds-rapida { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; font-size: 15px; position: relative; width: min(620px, 100%); display: flex; flex-direction: column; gap: 6px; padding: 16px 20px 14px; border: 1px solid var(--tinta, #17191c); border-radius: 3px; background: var(--papel, #f6f7f4); color: var(--tinta, #17191c); box-shadow: 0 18px 40px -14px rgba(16, 26, 48, 0.42); } .ds-rapida-cerrar { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border: none; background: transparent; color: var(--tinta-3, #646b7a); cursor: pointer; } .ds-rapida-cerrar:hover { color: var(--tinta, #17191c); background: rgba(23, 25, 28, 0.045); } .ds-rapida-nombre { margin-right: 34px; height: 40px; line-height: 40px; font-size: 1.25em; font-weight: 650; white-space: pre; overflow: hidden; } .ds-rapida-nombre mark { color: var(--sello-azul, #2b4c9b); background: color-mix(in srgb, var(--sello-azul, #2b4c9b) 15%, transparent); border-radius: 2px; } .ds-rapida-desc { min-height: 26px; font-size: 0.92em; line-height: 1.45; color: var(--tinta-3, #646b7a); } .ds-rapida-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; } .ds-rapida-chip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 10px; border: 1px solid var(--filete, #d9dee7); border-radius: 2px; background: transparent; color: var(--tinta-2, #4a5160); font: inherit; font-size: 0.84em; font-weight: 600; cursor: pointer; } .ds-rapida-chip:hover { border-color: var(--borde-campo, #a9b0bd); background: rgba(23, 25, 28, 0.045); color: var(--tinta, #17191c); } .ds-rapida-chip:focus-visible, .ds-rapida-asig:focus-visible, .ds-rapida-boton:focus-visible { outline: 2px solid var(--text-accent, #2b4c9b); outline-offset: 1px; } .ds-rapida-chip.ds-con-valor { color: var(--chip-color, var(--tinta, #17191c)); border-color: color-mix(in srgb, var(--chip-color, #17191c) 45%, var(--filete, #d9dee7)); background: color-mix(in srgb, var(--chip-color, #17191c) 7%, transparent); } .ds-rapida-quitar { display: flex; margin-right: -4px; padding: 2px; border-radius: 2px; opacity: 0.7; } .ds-rapida-quitar:hover { opacity: 1; background: color-mix(in srgb, currentColor 14%, transparent); } .ds-rapida-solo { width: 30px; padding: 0; justify-content: center; } .ds-rapida-pie { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 8px -20px 0; padding: 12px 20px 0; border-top: 1px solid var(--filete, #d9dee7); } .ds-rapida-asig { display: inline-flex; align-items: center; gap: 8px; min-width: 0; max-width: 60%; height: 32px; padding: 0 8px; border: none; background: transparent; color: var(--tinta-2, #4a5160); font: inherit; font-size: 0.86em; cursor: pointer; } .ds-rapida-asig:hover { background: rgba(23, 25, 28, 0.045); color: var(--tinta, #17191c); } .ds-rapida-asig-color { flex: none; width: 10px; height: 10px; border-radius: 1px; background: var(--asig-verde, #1f7a45); } .ds-rapida-asig-texto { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-rapida-flecha { display: flex; color: var(--tinta-3, #646b7a); } .ds-rapida-acciones { display: flex; gap: 8px; } .ds-rapida-boton { height: 34px; padding: 0 14px; border: 1px solid var(--borde-campo, #a9b0bd); border-radius: 2px; background: var(--blanco, #ffffff); color: var(--tinta, #17191c); font: inherit; font-size: 0.9em; font-weight: 600; cursor: pointer; } .ds-rapida-boton:hover { background: color-mix(in srgb, var(--tinta, #17191c) 6%, var(--blanco, #ffffff)); } .ds-rapida-ok { border-color: var(--rail-marino, #1b2d5b); background: var(--rail-marino, #1b2d5b); color: #ffffff; } .ds-rapida-ok:hover { background: var(--rail-marino-hover, #24396f); }"
+    },
+    {
+      "name": "Selector de fecha",
+      "kind": "custom",
+      "refersTo": "rapida-pop",
+      "description": "Flota bajo la opción de fecha: atajos con la fecha a la derecha, calendario de mes (hoy en rojo de sello, el elegido relleno del color principal) y, al pie, Hora y Repetir.",
+      "html": "<div class=\"ds-pop\" role=\"dialog\" aria-label=\"Fecha\"><div class=\"ds-pop-atajos\"><button class=\"ds-pop-atajo\" type=\"button\"><span class=\"ds-pop-icono\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></span><span>Hoy</span><span class=\"ds-pop-fecha\">mar 24 nov</span></button><button class=\"ds-pop-atajo\" type=\"button\"><span class=\"ds-pop-icono\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></span><span>Mañana</span><span class=\"ds-pop-fecha\">mié 25 nov</span></button><button class=\"ds-pop-atajo\" type=\"button\"><span class=\"ds-pop-icono\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m4.9 4.9 14.2 14.2\"/></svg></span><span>Sin fecha</span><span class=\"ds-pop-fecha\"></span></button></div><div class=\"ds-pop-cal\"><div class=\"ds-pop-cab\"><span>Noviembre 2026</span></div><div class=\"ds-pop-rejilla\"><span class=\"ds-pop-sem\">L</span><span class=\"ds-pop-sem\">M</span><span class=\"ds-pop-sem\">X</span><span class=\"ds-pop-sem\">J</span><span class=\"ds-pop-sem\">V</span><span class=\"ds-pop-sem\">S</span><span class=\"ds-pop-sem\">D</span><button class=\"ds-pop-dia ds-fuera\" type=\"button\">26</button><button class=\"ds-pop-dia ds-fuera\" type=\"button\">27</button><button class=\"ds-pop-dia ds-fuera\" type=\"button\">28</button><button class=\"ds-pop-dia ds-fuera\" type=\"button\">29</button><button class=\"ds-pop-dia ds-fuera\" type=\"button\">30</button><button class=\"ds-pop-dia ds-fuera\" type=\"button\">31</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">1</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">2</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">3</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">4</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">5</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">6</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">7</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">8</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">9</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">10</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">11</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">12</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">13</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">14</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">15</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">16</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">17</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">18</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">19</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">20</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">21</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">22</button><button class=\"ds-pop-dia ds-pasado\" type=\"button\">23</button><button class=\"ds-pop-dia ds-hoy\" type=\"button\">24</button><button class=\"ds-pop-dia ds-elegido\" type=\"button\">25</button><button class=\"ds-pop-dia\" type=\"button\">26</button><button class=\"ds-pop-dia\" type=\"button\">27</button><button class=\"ds-pop-dia\" type=\"button\">28</button><button class=\"ds-pop-dia\" type=\"button\">29</button><button class=\"ds-pop-dia\" type=\"button\">30</button></div></div></div>",
+      "css": ".ds-pop { font-family: \"Public Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif; font-size: 13.5px; width: 284px; padding: 6px; border: 1px solid var(--tinta, #17191c); border-radius: 2px; background: var(--blanco, #ffffff); color: var(--tinta, #17191c); box-shadow: 0 18px 40px -14px rgba(16, 26, 48, 0.42); animation: ds-pop-entra 140ms cubic-bezier(0.16, 1, 0.3, 1) both; } @keyframes ds-pop-entra { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } } .ds-pop-atajos { display: flex; flex-direction: column; padding-bottom: 6px; border-bottom: 1px solid var(--filete, #d9dee7); } .ds-pop-atajo { display: grid; grid-template-columns: 18px 1fr auto; gap: 10px; align-items: center; height: 32px; padding: 0 8px; border: none; border-radius: 1px; background: transparent; color: inherit; font: inherit; font-weight: 500; text-align: left; cursor: pointer; } .ds-pop-atajo:hover, .ds-pop-dia:hover { background: rgba(23, 25, 28, 0.045); } .ds-pop-atajo:focus-visible, .ds-pop-dia:focus-visible { outline: 2px solid var(--text-accent, #2b4c9b); outline-offset: -2px; } .ds-pop-icono { display: flex; color: var(--tinta-2, #4a5160); } .ds-pop-fecha { font-size: 0.86em; color: var(--tinta-3, #646b7a); font-variant-numeric: tabular-nums; } .ds-pop-cal { padding: 8px 4px 6px; } .ds-pop-cab { padding: 0 4px 6px; font-weight: 750; } .ds-pop-rejilla { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; } .ds-pop-sem { padding: 2px 0 4px; text-align: center; font-size: 0.72em; font-weight: 800; letter-spacing: 0.08em; color: var(--tinta-3, #646b7a); } .ds-pop-dia { height: 30px; padding: 0; border: none; border-radius: 2px; background: transparent; color: inherit; font: inherit; font-size: 0.9em; font-weight: 550; font-variant-numeric: tabular-nums; cursor: pointer; } .ds-pop-dia.ds-fuera { color: var(--tinta-3, #646b7a); } .ds-pop-dia.ds-pasado { color: var(--tinta-3, #646b7a); opacity: 0.6; } .ds-pop-dia.ds-hoy { color: var(--sello-rojo, #b3261e); font-weight: 800; } .ds-pop-dia.ds-elegido { background: var(--rail-marino, #1b2d5b); color: #ffffff; } @media (prefers-reduced-motion: reduce) { .ds-pop { animation-duration: 1ms; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Tablón oficial",
+    "overview": "Check se lee como el calendario de exámenes clavado en el tablón de la facultad: un raíl institucional azul marino a la izquierda y, a la derecha, una hoja de papel frío con una tabla de filetes donde cada tarea es una fila fechada. El estado no se pinta con fondos ni insignias de colores: se estampa. HECHO, ATRASADA y ANULADA son sellos de caucho girados −4°, y una tarea hecha no desaparece, queda sellada en su fila.\n\nLa densidad es la de un documento administrativo bien compuesto: filas de 48 px, una sola familia tipográfica (Public Sans variable, incluida en la app), rótulos en versalitas espaciadas, cifras tabulares en todas las fechas y plazos, esquinas casi rectas y ninguna sombra en reposo. La calma viene de la regularidad de la tabla; la urgencia, de un rojo de sello que solo aparece cuando algo está atrasado o es inminente.\n\nEl sistema es configurable por diseño: el usuario elige el color principal (que tiñe el raíl y la acción principal), el tamaño de texto (12–20 px, todo escala en `em`) y el color de cada asignatura. Por eso ningún componente depende de un tono concreto del acento ni del color de una asignatura para ser legible. Rechaza explícitamente la app de productividad oscura con tarjetas redondeadas y acento verde azulado.",
+    "keyCharacteristics": [
+      "Raíl institucional de 232 px en el color principal, con texto claro.",
+      "Hoja de papel con tabla de filetes de 1 px y un filete fuerte de 2 px en tinta bajo la cabecera del documento.",
+      "Sellos de caucho como único lenguaje de estado, con un golpe de 120 ms al marcar.",
+      "Una familia, versalitas espaciadas para rótulos y cifras tabulares.",
+      "Esquinas de 2–3 px, plano en reposo; la sombra solo para lo que flota (menús, ventanas, avisos).",
+      "Tiempo proporcional: líneas de tiempo y ejes con huecos que miden días reales."
+    ],
+    "rules": [
+      {
+        "name": "La Regla del Sello Rojo",
+        "body": "El rojo significa «atrasado o inminente» y nada más. No se usa para decorar, para destacar una sección ni para errores genéricos de interfaz que no sean del archivo.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Color Ajeno",
+        "body": "El acento y los colores de asignatura los elige el usuario. Ningún texto se apoya en ellos para su contraste salvo el texto sobre el acento, que se calcula por luminancia.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla de la Cifra Tabular",
+        "body": "Toda fecha, hora, contador y plazo lleva cifras tabulares, para que las columnas del tablón se alineen.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla de la Versalita",
+        "body": "Las versalitas espaciadas rotulan estructura real (una columna, una sección, un grupo de filas). Nunca van como antetítulo decorativo encima de un título.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla del Papel Plano",
+        "body": "Si no flota sobre la hoja, no lleva sombra. Los estados de reposo, hover y selección se resuelven con lavados (`resalte`, 4,5 % de tinta), bordes y contornos.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do marcar el estado con un sello (HECHO, ATRASADA, ANULADA) en la columna de plazo y dejar la fila en su sitio.",
+      "Do separar filas y grupos con filetes de 1 px (`filete`) y rótulos en versalitas; reservar el filete de 2 px en tinta para cerrar la cabecera de un documento o de una ventana.",
+      "Do poner cifras tabulares en toda fecha, hora, contador y plazo.",
+      "Do expresar los tamaños en `em` para que el tamaño de texto del usuario (12–20 px) escale toda la interfaz.",
+      "Do pasar el color de asignatura como `--tarea-color` y usarlo solo en bordes, texto de etiqueta, marcas y lavados del 7–15 %.",
+      "Do dibujar el tiempo proporcional a los días, con el intervalo rotulado.",
+      "Do derivar el texto, los atenuados y los lavados del raíl de `--rail-texto` con `color-mix`, para que sigan al color principal del usuario.",
+      "Do mantener las esquinas en 2 px (3 px para sellos y ventanas)."
+    ],
+    "donts": [
+      "Don't usar tarjetas redondeadas con sombra, ni un acento verde azulado sobre fondo oscuro: es la app de productividad que este sistema rechaza.",
+      "Don't poner sombra a nada que no flote sobre la hoja.",
+      "Don't usar el rojo de sello para algo que no esté atrasado o sea inminente.",
+      "Don't hacer desaparecer una tarea al marcarla; se sella.",
+      "Don't apoyar el contraste de un texto en el color de una asignatura o en el acento elegido por el usuario.",
+      "Don't añadir una segunda familia tipográfica ni descargar fuentes en tiempo de ejecución; la monoespaciada del sistema solo para rutas de archivo.",
+      "Don't poner las versalitas como antetítulo decorativo sobre un título.",
+      "Don't marcar con tramas ni símbolos que dos entregas caen el mismo día: basta con que compartan fecha. La trama queda para periodos (exámenes, días no lectivos).",
+      "Don't llenar la línea de añadir ni la ventana de añadir de textos de ayuda ni atajos visibles: lo entendido se dice en una línea de texto (línea) o resaltado dentro del propio nombre (ventana), y hay un único botón principal.",
+      "Don't usar bloques sólidos de tinta para distinguir tipos o categorías; se distinguen por el grosor del borde."
+    ]
+  }
+}

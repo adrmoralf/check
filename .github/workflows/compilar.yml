@@ -1,0 +1,101 @@
+# Compila la app para Ubuntu (.deb y .AppImage) y Windows (instalador NSIS).
+# - En cada push a main: los instaladores quedan como artefactos de la ejecución (pestaña Actions).
+# - Con una etiqueta vX.Y.Z: además se publica una release con los instaladores firmados y el
+#   latest.json que lee el actualizador de la app. El mensaje de la etiqueta anotada son las
+#   novedades que se enseñan en la app.
+name: Compilar
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    outputs:
+      id: ${{ steps.crear.outputs.id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: crear
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          git fetch --force origin "refs/tags/$TAG:refs/tags/$TAG"
+          git tag -l --format='%(contents)' "$TAG" | sed '/-----BEGIN PGP SIGNATURE-----/,$d' > notas.md
+          [ -s notas.md ] || echo "Check ${TAG#v}" > notas.md
+          gh release create "$TAG" --title "Check ${TAG#v}" --notes-file notas.md --draft
+          echo "id=$(gh release view "$TAG" --json databaseId --jq .databaseId)" >> "$GITHUB_OUTPUT"
+
+  compilar:
+    needs: release
+    # También corre sin etiqueta (push a main), cuando el job release se salta
+    if: ${{ !failure() && !cancelled() }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - plataforma: ubuntu-22.04
+            nombre: ubuntu
+          - plataforma: windows-latest
+            nombre: windows
+    runs-on: ${{ matrix.plataforma }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dependencias de Ubuntu
+        if: matrix.nombre == 'ubuntu'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libxdo-dev libssl-dev
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - run: npm ci
+      - run: npm test
+
+      # Compila y firma; con etiqueta sube los instaladores y el latest.json a la release
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          releaseId: ${{ needs.release.outputs.id }}
+          includeUpdaterJson: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: check-${{ matrix.nombre }}
+          path: |
+            src-tauri/target/release/bundle/deb/*.deb
+            src-tauri/target/release/bundle/appimage/*.AppImage
+            src-tauri/target/release/bundle/nsis/*.exe
+          if-no-files-found: ignore
+
+  publicar:
+    needs: [release, compilar]
+    runs-on: ubuntu-latest
+    steps:
+      # La release se crea como borrador y solo se publica cuando las dos plataformas han subido
+      # lo suyo: así el actualizador nunca ve un latest.json a medias
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "${{ github.ref_name }}" -R "${{ github.repository }}" --draft=false --latest
