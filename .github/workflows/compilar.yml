@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       id: ${{ steps.crear.outputs.id }}
+      notas: ${{ steps.crear.outputs.notas }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,6 +35,7 @@ jobs:
           [ -s notas.md ] || echo "Check ${TAG#v}" > notas.md
           gh release create "$TAG" --title "Check ${TAG#v}" --notes-file notas.md --draft
           echo "id=$(gh release view "$TAG" --json databaseId --jq .databaseId)" >> "$GITHUB_OUTPUT"
+          { echo "notas<<FIN_NOTAS"; cat notas.md; echo "FIN_NOTAS"; } >> "$GITHUB_OUTPUT"
 
   compilar:
     needs: release
@@ -79,6 +81,8 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
           releaseId: ${{ needs.release.outputs.id }}
+          # Las novedades que enseña la app (van en latest.json)
+          releaseBody: ${{ needs.release.outputs.notas }}
           includeUpdaterJson: true
 
       - uses: actions/upload-artifact@v4
