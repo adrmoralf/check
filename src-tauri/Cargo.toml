@@ -1,6 +1,6 @@
 [package]
 name = "tareas-app"
-version = "1.2.1"
+version = "1.2.2"
 description = "Lista de tareas en un archivo Markdown"
 edition = "2024"
 

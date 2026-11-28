@@ -1,7 +1,8 @@
 // Pestaña Inicio: exámenes, entregas, prácticas y avances hasta el final del cuatrimestre.
-// Arriba, la tira de semanas (una columna por semana, de esta al fin de exámenes, con una marca
-// por cada cosa: se ve de un vistazo qué semanas vienen cargadas). Debajo, el registro agrupado
-// por semanas, cada tarea con sus subtareas. Los exámenes que ya pasaron se dan por hechos.
+// A la izquierda, el registro agrupado por semanas, cada tarea con sus subtareas. A la derecha, la
+// tira de semanas en vertical (una fila por semana, de esta al fin de exámenes, con una marca por
+// cada cosa: se ve de un vistazo qué semanas vienen cargadas); en hoja estrecha va debajo.
+// Los exámenes que ya pasaron se dan por hechos.
 
 import { setIcon } from "obsidian";
 import { Contexto } from "../panel";
@@ -10,7 +11,7 @@ import { periodoDe } from "../../core/curso";
 import { TipoEntrega, tipoDe } from "../../core/entregas";
 import { ISO, diasEntre, fechaCorta, lunesDe, sumarDias } from "../../core/fechas";
 import { fechaColumna, pastillaTag } from "../fila";
-import { cabeceraDoc } from "../comun";
+import { cabeceraDoc, titulo } from "../comun";
 import { datoCurso } from "./hoy";
 
 const NOMBRE: Record<TipoEntrega, string> = {
@@ -57,10 +58,12 @@ export function pintarInicio(ctx: Contexto, el: HTMLElement) {
   const semanas: ISO[] = [];
   for (let l = lunesDe(hoy); l <= fin; l = sumarDias(l, 7)) semanas.push(l);
   const grupos = new Map<ISO, HTMLElement>();
-  tiraSemanas(ctx, el, semanas, futuras, per, grupos);
+  const cuerpo = el.createDiv({ cls: "inicio" });
+  const principal = cuerpo.createDiv({ cls: "inicio-principal" });
+  tiraSemanas(ctx, cuerpo.createEl("aside", { cls: "inicio-lado" }), semanas, futuras, per, grupos);
 
   // Registro: atrasadas arriba y después una sección por semana
-  const reg = el.createDiv({ cls: "registro", attr: { role: "table", "aria-label": "Exámenes, entregas, prácticas y avances por semana" } });
+  const reg = principal.createDiv({ cls: "registro", attr: { role: "table", "aria-label": "Exámenes, entregas, prácticas y avances por semana" } });
   const cab = reg.createDiv({ cls: "registro-fila registro-cabecera", attr: { role: "row", "aria-hidden": "true" } });
   for (const c of ["", "Faltan", "Fecha", "Tipo", "Asig.", "Tarea"]) cab.createSpan({ text: c });
 
@@ -94,15 +97,15 @@ function rotulo(el: HTMLElement, texto: string, n: number): HTMLElement {
 }
 
 /**
- * Tira de semanas: una columna por semana con una marca por cada cosa (color de la asignatura,
+ * Tira de semanas: una fila por semana con una marca por cada cosa (color de la asignatura,
  * relleno si es examen, discontinua si es un avance). Las semanas de exámenes van sombreadas.
  * Pulsar una semana lleva a su sección del registro; pulsar una marca abre la tarea.
  */
 function tiraSemanas(ctx: Contexto, el: HTMLElement, semanas: ISO[], futuras: Item[], per: { finClases: ISO } | null, grupos: Map<ISO, HTMLElement>) {
   const { p, hoy } = ctx;
+  titulo(el, "Semanas");
   const caja = el.createDiv({ cls: "semanas-caja" });
   const tira = caja.createDiv({ cls: "semanas", attr: { role: "list", "aria-label": "Carga por semanas hasta el fin de exámenes" } });
-  tira.style.setProperty("--n-semanas", String(semanas.length));
   for (const l of semanas) {
     const deLaSemana = futuras.filter((x) => lunesDe(x.t.fecha!) === l);
     const col = tira.createDiv({ cls: "semana", attr: { role: "listitem" } });

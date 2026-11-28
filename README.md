@@ -46,7 +46,7 @@ entiende la sintaxis antigua del plugin Tasks (📅 ⏫ ✅).
 - **Añadir escribiendo**: «memoria RIS mañana 23:59 alta» o «repasar CI cada lunes» se convierten en la tarea con asignatura, fecha, hora, prioridad y repetición; `+examen`, `+entrega` o `+practica` ponen el tipo (también se elige en la ventana de añadir).
 - **Tareas que se repiten**: al marcarlas hechas aparece encima la siguiente con su nueva fecha.
 - **Notas** en cada tarea (con enlaces que se abren en el navegador).
-- Pestaña **Inicio** (la principal): exámenes, entregas, prácticas y avances hasta el fin del cuatrimestre. Arriba, una tira con una columna por semana (se ve qué semanas vienen cargadas); debajo, la lista por semanas con los días que faltan y las subtareas de cada una. Las entregas, prácticas y avances se marcan como hechos desde ahí; los exámenes no hace falta: cuando pasa su fecha cuentan como hechos solos.
+- Pestaña **Inicio** (la principal): exámenes, entregas, prácticas y avances hasta el fin del cuatrimestre. A la derecha, una tira vertical con una fila por semana (se ve qué semanas vienen cargadas); a la izquierda, la lista por semanas con los días que faltan y las subtareas de cada una. Las entregas, prácticas y avances se marcan como hechos desde ahí; los exámenes no hace falta: cuando pasa su fecha cuentan como hechos solos.
 - **Avisos** del sistema: resumen del día a la hora elegida y aviso unas horas antes de las tareas con hora.
 - **Bandeja del sistema**: al cerrar, Check se queda junto al reloj con el número de tareas para hoy; puede arrancar con el PC.
 - **Atajo global** (por defecto `Ctrl+Alt+N`) para añadir una tarea desde cualquier programa.
