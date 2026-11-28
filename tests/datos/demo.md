@@ -34,6 +34,7 @@ Los exámenes son los de 1.ª convocatoria del [[Calendario de exámenes]].
 ### Proyectos de Automatización
 
 - [x] Cuadro eléctrico de la parte del circuito de control #PA @2026-11-18 ✓2026-11-18
+- [ ] Examen de seguridad eléctrica #PA @2026-11-26 +examen
 - [ ] Examen de conexionado de Proyectos de Automatización #PA @2026-12-02 !alta
 - [ ] Examen de Proyectos de Automatización (1.ª convocatoria) #PA @2027-02-08 !alta
 
@@ -44,6 +45,10 @@ Los exámenes son los de 1.ª convocatoria del [[Calendario de exámenes]].
 ### Redes Inalámbricas de Sensores
 
 - [ ] Entrega de la memoria de prácticas y del proyecto #RIS @2027-01-20 23:59 !alta
+	- [x] Montar la red de sensores #RIS ✓2026-11-25
+	- [ ] Medir el consumo de los nodos #RIS @2026-12-10
+	- [ ] Escribir los resultados #RIS
+- [ ] Repasar los apuntes de enrutamiento #RIS @2026-12-04 +avance
 - [ ] Examen de Redes Inalámbricas de Sensores (1.ª convocatoria) #RIS @2027-01-29 !alta
 
 ### Sistemas Digitales Avanzados y Aplicaciones

@@ -1,6 +1,7 @@
 // Consultas sobre el índice de tareas que usan las vistas (puras, sin Obsidian).
 
-import { ISO, diasEntre, lunesDe, sumarDias } from "./fechas";
+import { examenPasado } from "./entregas";
+import { ISO, diasEntre, hoyISO, lunesDe, sumarDias } from "./fechas";
 import { Tarea } from "./tarea";
 
 export interface TareaIdx extends Tarea {
@@ -61,7 +62,11 @@ export function extraerTareas(
   return tareas;
 }
 
-export const pendiente = (t: Tarea) => !t.hecha && !t.cancelada;
+/** Pendiente: sin hacer ni cancelar (un examen que ya pasó cuenta como hecho, ver examenPasado). */
+export const pendiente = (t: Tarea) => !t.hecha && !t.cancelada && !examenPasado(t, hoyISO());
+
+/** Hecha a mano o, si es un examen, porque su fecha ya pasó. */
+export const terminada = (t: Tarea, hoy: ISO = hoyISO()) => t.hecha || examenPasado(t, hoy);
 
 export function ordenar<T extends Tarea>(ts: T[]): T[] {
   return [...ts].sort((a, b) => {
@@ -134,7 +139,7 @@ export function progresoPorTag(ts: TareaIdx[], hoy: ISO): Map<string, Progreso> 
     for (const tag of t.tags.length ? t.tags : [""]) {
       const p = mapa.get(tag) ?? { hechas: 0, total: 0, pendientes: 0, proxima: null };
       p.total++;
-      if (t.hecha) p.hechas++;
+      if (terminada(t, hoy)) p.hechas++;
       else {
         p.pendientes++;
         if (t.fecha && t.fecha >= hoy && (!p.proxima || t.fecha < p.proxima)) p.proxima = t.fecha;

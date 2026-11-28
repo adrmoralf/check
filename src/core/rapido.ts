@@ -1,5 +1,5 @@
 // Añadir rápido escribiendo: convierte una frase como «memoria RIS mañana 23:59 alta» en una
-// tarea con asignatura, fecha, hora, prioridad, tipo (+examen, +entrega, +practica) y repetición. Lo que no se reconoce queda como texto.
+// tarea con asignatura, fecha, hora, prioridad, tipo (+examen, +entrega, +practica, +avance) y repetición. Lo que no se reconoce queda como texto.
 
 import { DIAS_LARGOS, ISO, MESES_LARGOS, diaSemana, esISO, proximoLunes, sumarDias } from "./fechas";
 import { NuevaTarea, TipoTarea, normalizarRegla } from "./tarea";
@@ -115,7 +115,7 @@ const REGLAS: Regla[] = [
   },
 
   // Tipo
-  { re: /(?:^|\s)\+(examen|entrega|practica)\b/, aplicar: (m, r) => { r.tipo = m[1] as TipoTarea; } },
+  { re: /(?:^|\s)\+(examen|entrega|practica|avance)\b/, aplicar: (m, r) => { r.tipo = m[1] as TipoTarea; } },
 
   // Prioridad
   { re: /(?:^|\s)!(max|maxima|alta|media|baja)\b/, aplicar: (m, r) => { r.prioridad = prioridadDe(m[1]); } },

@@ -44,6 +44,8 @@ export class ModalAnadir extends Modal {
   private notas = "";
   private padre: TareaIdx | null;
   private editar: TareaIdx | null;
+  /** Al editar: de qué tarea era subtarea al abrir (para saber si hay que moverla) */
+  private padreOriginal: TareaIdx | null = null;
   /** Lo elegido a mano (manda sobre lo que se entienda de la frase) */
   private elegido = { tag: false, fecha: false, prioridad: false, tipo: false, repetir: false };
   private popover: HTMLElement | null = null;
@@ -68,6 +70,8 @@ export class ModalAnadir extends Modal {
       this.tipo = t.tipo;
       this.repetir = t.repetir;
       this.notas = t.notas.join("\n");
+      this.padre = t.padre === null ? null : (this.p.almacen.todas.find((x) => x.path === t.path && x.linea === t.padre) ?? null);
+      this.padreOriginal = this.padre;
     }
   }
 
@@ -135,9 +139,9 @@ export class ModalAnadir extends Modal {
     const chipFecha = this.chip(chips, "calendar", "Fecha");
     const chipPrio = this.chip(chips, "flag", "Prioridad");
     const chipTipo = this.chip(chips, "shapes", "Tipo");
-    const chipPadre = this.editar ? null : this.chip(chips, "corner-down-right", "Subtarea de…");
-    const chipMas = this.editar ? null : chips.createEl("button", { cls: "rapida-chip rapida-chip-solo", attr: { type: "button", "aria-label": "Más opciones", title: "Más opciones" } });
-    if (chipMas) setIcon(chipMas, "ellipsis");
+    const chipPadre = this.chip(chips, "corner-down-right", "Subtarea de…");
+    const chipMas = chips.createEl("button", { cls: "rapida-chip rapida-chip-solo", attr: { type: "button", "aria-label": "Más opciones", title: "Más opciones" } });
+    setIcon(chipMas, "ellipsis");
 
     chipFecha.boton.addEventListener("click", () => this.abrirFecha(chipFecha.boton));
     chipFecha.quitar.addEventListener("click", (e) => {
@@ -162,15 +166,13 @@ export class ModalAnadir extends Modal {
       this.elegido.tipo = true;
       this.pintarTodo();
     });
-    if (chipPadre) {
-      chipPadre.boton.addEventListener("click", (e) => this.menuPadre(e));
-      chipPadre.quitar.addEventListener("click", (e) => {
-        e.stopPropagation();
-        this.padre = null;
-        this.pintarTodo();
-      });
-    }
-    chipMas?.addEventListener("click", (e) => {
+    chipPadre.boton.addEventListener("click", (e) => this.menuPadre(e));
+    chipPadre.quitar.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.padre = null;
+      this.pintarTodo();
+    });
+    chipMas.addEventListener("click", (e) => {
       const m = new Menu();
       m.addItem((i) => i.setTitle("Subtarea de…").setIcon("corner-down-right").onClick(() => this.menuPadre(e)));
       m.addItem((i) => i.setTitle("Hora y repetición…").setIcon("repeat").onClick(() => this.abrirFecha(chipFecha.boton)));
@@ -200,7 +202,7 @@ export class ModalAnadir extends Modal {
       // Tipo
       chipTipo.poner(TIPOS.find((x) => x.v === d.tipo)?.nombre ?? null, "var(--tinta)");
       // Subtarea de
-      chipPadre?.poner(this.padre ? this.padre.descripcion : null);
+      chipPadre.poner(this.padre ? this.padre.descripcion : null);
       // Asignatura
       asig.empty();
       const a = d.tag ? this.p.asignatura(d.tag) : undefined;
@@ -425,7 +427,15 @@ export class ModalAnadir extends Modal {
   private menuPadre(e: MouseEvent) {
     const m = new Menu();
     const tag = this.efectivo().tag;
-    const candidatas = ordenar(this.p.almacen.todas.filter((t) => pendiente(t) && t.padre === null && (!tag || t.tags.includes(tag)))).slice(0, 14);
+    // Al editar, ni ella misma ni sus subtareas pueden ser su tarea principal
+    const propias = this.editar ? this.descendientes(this.editar) : new Set<number>();
+    const candidatas = ordenar(
+      this.p.almacen.todas.filter(
+        (t) => pendiente(t) && t.padre === null && (!tag || t.tags.includes(tag)) && !(this.editar && t.path === this.editar.path && propias.has(t.linea)),
+      ),
+    ).slice(0, 14);
+    // La actual se ve marcada aunque no entre en la lista
+    if (this.padre && !candidatas.includes(this.padre)) candidatas.unshift(this.padre);
     m.addItem((i) =>
       i.setTitle("Ninguna (tarea suelta)").setChecked(!this.padre).onClick(() => {
         this.padre = null;
@@ -442,6 +452,22 @@ export class ModalAnadir extends Modal {
       );
     }
     m.showAtMouseEvent(e);
+  }
+
+  /** Líneas de la tarea y de todas sus subtareas (a cualquier profundidad). */
+  private descendientes(t: TareaIdx): Set<number> {
+    const res = new Set([t.linea]);
+    let creciendo = true;
+    while (creciendo) {
+      creciendo = false;
+      for (const x of this.p.almacen.todas) {
+        if (x.path === t.path && x.padre !== null && res.has(x.padre) && !res.has(x.linea)) {
+          res.add(x.linea);
+          creciendo = true;
+        }
+      }
+    }
+    return res;
   }
 
   // ---------------------------------------------------------------- datos
@@ -488,7 +514,11 @@ export class ModalAnadir extends Modal {
     if (!datos.descripcion.trim()) return;
     try {
       if (this.editar) {
-        await this.p.acciones.editar(this.editar, datos, this.listaNotas());
+        // Se mueve si cambia la tarea principal o, siendo suelta, la asignatura (va a su sección)
+        const cambiaPadre = (this.padre?.linea ?? null) !== (this.padreOriginal?.linea ?? null);
+        const cambiaAsig = !this.padre && !this.padreOriginal && (this.editar.tags[0] ?? "") !== (datos.tag ?? "");
+        const mover = cambiaPadre || cambiaAsig ? { padre: this.padre, seccion: this.p.asignatura(datos.tag)?.nombre ?? "Otras tareas" } : undefined;
+        await this.p.acciones.editar(this.editar, datos, this.listaNotas(), mover);
       } else {
         await this.p.acciones.anadir(construirLinea(datos), {
           nota: this.p.ajustes.notaTareas,
@@ -519,7 +549,7 @@ function textoEditable(linea: string): string {
     .replace(/(^|\s)#[^\s#\]|,;:!?()]+/g, "$1")
     .replace(/(^|\s)@\d{4}-\d{2}-\d{2}(?:\s+\d{1,2}:\d{2})?(?=\s|$)/g, "$1")
     .replace(/(^|\s)!(máxima|maxima|máx|max|alta|media|baja|mínima|minima|mín|min)(?=\s|$)/giu, "$1")
-    .replace(/(^|\s)\+(examen|entrega|pr[aá]ctica)(?=\s|$)/giu, "$1")
+    .replace(/(^|\s)\+(examen|entrega|pr[aá]ctica|avance)(?=\s|$)/giu, "$1")
     .replace(/(^|\s)[✓✔]\s?\d{4}-\d{2}-\d{2}/gu, "$1")
     .replace(/(^|\s)↻\s?[\p{L}\d]+(?=\s|$)/gu, "$1")
     .replace(/\s*(📅|⏳|🛫|✅)️?\s*\d{4}-\d{2}-\d{2}/gu, "")

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { insertarEnSeccion, insertarSubtarea } from "../src/core/insertar";
+import { insertarEnSeccion, insertarSubtarea, moverBloque } from "../src/core/insertar";
 
 const nota = [
   "# Tareas",
@@ -69,5 +69,48 @@ describe("insertarSubtarea", () => {
     const r = insertarSubtarea(base, "- [ ] T3", 0);
     expect(r.contenido).toBe("- [ ] Examen\n    - [ ] T1\n    - [ ] T2\n    - [ ] T3\n- [ ] Otra");
     expect(r.linea).toBe(3);
+  });
+});
+
+describe("mover una tarea", () => {
+  const doc = [
+    "### RIS",
+    "",
+    "- [ ] Memoria #RIS",
+    "\t- [ ] Introducción",
+    "- [ ] Leer el artículo #RIS",
+    "  nota del artículo",
+    "\t- [ ] Resumen",
+    "",
+    "### CI",
+    "",
+    "- [ ] Repasar #CI",
+  ].join("\n");
+
+  it("la hace subtarea de otra, con sus subtareas y notas", () => {
+    const r = moverBloque(doc, 4, { padre: 2 });
+    expect(r.contenido.split("\n").slice(0, 8)).toEqual([
+      "### RIS",
+      "",
+      "- [ ] Memoria #RIS",
+      "\t- [ ] Introducción",
+      "\t- [ ] Leer el artículo #RIS",
+      "\t  nota del artículo",
+      "\t\t- [ ] Resumen",
+      "",
+    ]);
+    expect(r.linea).toBe(4);
+  });
+
+  it("la saca a otra sección como tarea suelta", () => {
+    const r = moverBloque(doc, 3, { seccion: "CI" });
+    const ls = r.contenido.split("\n");
+    expect(ls[r.linea]).toBe("- [ ] Introducción");
+    expect(ls.slice(-2)).toEqual(["- [ ] Repasar #CI", "- [ ] Introducción"]);
+    expect(ls).not.toContain("\t- [ ] Introducción");
+  });
+
+  it("no deja hacerla subtarea de sí misma", () => {
+    expect(() => moverBloque(doc, 4, { padre: 6 })).toThrow();
   });
 });

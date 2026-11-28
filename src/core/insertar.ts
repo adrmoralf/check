@@ -117,3 +117,38 @@ export function insertarSubtarea(contenido: string, linea: string, padre: number
   lineas.splice(pos, 0, sangria + linea.trimStart());
   return { contenido: lineas.join(eol), linea: pos };
 }
+
+export type DestinoMover = { padre: number } | { seccion: string };
+
+const anchoSangria = (s: string) => (s.match(/^\s*/)?.[0] ?? "").replace(/\t/g, "    ").length;
+
+/**
+ * Mueve la tarea de la línea `linea`, con sus subtareas y notas (todo lo que tiene más sangría
+ * debajo), para que sea subtarea de la tarea de la línea `padre` o una tarea suelta al final de
+ * la sección `seccion`. La sangría del bloque se ajusta a su nuevo sitio.
+ */
+export function moverBloque(contenido: string, linea: number, destino: DestinoMover): ResultadoInsercion {
+  const { lineas, eol } = conSaltos(contenido);
+  if (!RE_ITEM.test(lineas[linea] ?? "")) throw new Error("La tarea ya no está en esa línea.");
+  const base = anchoSangria(lineas[linea]);
+  let fin = linea + 1;
+  while (fin < lineas.length && lineas[fin].trim() !== "" && anchoSangria(lineas[fin]) > base) fin++;
+  const n = fin - linea;
+  if ("padre" in destino && destino.padre >= linea && destino.padre < fin) throw new Error("Una tarea no puede ser subtarea de sí misma ni de una de sus subtareas.");
+
+  // El bloque sin la sangría de su primera línea (las de dentro conservan la relativa)
+  const sangriaBase = lineas[linea].match(/^\s*/)![0];
+  const bloque = lineas.slice(linea, fin).map((l) => (l.startsWith(sangriaBase) ? l.slice(sangriaBase.length) : l.trimStart()));
+  lineas.splice(linea, n);
+  const sinBloque = lineas.join(eol);
+
+  if ("seccion" in destino) return insertarEnSeccion(sinBloque, bloque.join(eol), destino.seccion);
+
+  const padre = destino.padre > linea ? destino.padre - n : destino.padre;
+  const r = insertarSubtarea(sinBloque, bloque[0], padre);
+  if (bloque.length === 1) return r;
+  const ls = r.contenido.split(/\r?\n/);
+  const sangria = ls[r.linea].match(/^\s*/)![0];
+  ls.splice(r.linea + 1, 0, ...bloque.slice(1).map((l) => sangria + l));
+  return { contenido: ls.join(eol), linea: r.linea };
+}

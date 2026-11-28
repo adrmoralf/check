@@ -6,7 +6,7 @@
 //   #ETIQUETA          asignatura (o cualquier etiqueta)
 //   @AAAA-MM-DD HH:MM  fecha límite; la hora es opcional
 //   !max !alta !media !baja   prioridad (sin nada = normal)
-//   +examen +entrega +practica   tipo (sin nada, Inicio lo deduce del texto)
+//   +examen +entrega +practica +avance   tipo (sin nada, Inicio lo deduce del texto)
 //   ✓AAAA-MM-DD        día en que se hizo (lo pone la app al marcarla)
 //   ↻semanal           se repite (diaria, laborables, semanal, quincenal, mensual, anual,
 //                      un día de la semana como ↻lunes, o cada N días/semanas/meses: ↻3d ↻2s ↻1m)
@@ -19,11 +19,12 @@
 
 import { DIAS_LARGOS, ISO, diaSemana, esFinDeSemana, esISO, sumarDias } from "./fechas";
 
-export type TipoTarea = "examen" | "entrega" | "practica";
+export type TipoTarea = "examen" | "entrega" | "practica" | "avance";
 export const TIPOS: { v: TipoTarea; nombre: string }[] = [
   { v: "examen", nombre: "Examen" },
   { v: "entrega", nombre: "Entrega" },
   { v: "practica", nombre: "Práctica" },
+  { v: "avance", nombre: "Avance" },
 ];
 
 export interface Tarea {
@@ -34,7 +35,7 @@ export interface Tarea {
   tags: string[];
   /** 0 mínima · 1 baja · 2 normal · 3 media · 4 alta · 5 máxima */
   prioridad: number;
-  /** Tipo puesto a mano (+examen, +entrega, +practica) */
+  /** Tipo puesto a mano (+examen, +entrega, +practica, +avance) */
   tipo: TipoTarea | null;
   vence: ISO | null;
   /** Hora límite "HH:MM" (opcional) */
@@ -58,7 +59,7 @@ const RE_LINEA = /^(\s*(?:[-*+]|\d+[.)])\s+)\[(.)\](\s+)(.*)$/;
 const RE_TAG = /(^|\s)#([^\s#\]|,;:!?()]+)/g;
 const RE_FECHA = /(^|\s)@(\d{4}-\d{2}-\d{2})(?:\s+(\d{1,2}:\d{2}))?(?=\s|$)/u;
 const RE_PRIO = /(^|\s)!(máxima|maxima|máx|max|alta|media|baja|mínima|minima|mín|min)(?=\s|$)/iu;
-const RE_TIPO = /(^|\s)\+(examen|entrega|pr[aá]ctica)(?=\s|$)/iu;
+const RE_TIPO = /(^|\s)\+(examen|entrega|pr[aá]ctica|avance)(?=\s|$)/iu;
 const RE_HECHA = /(^|\s)[✓✔]\s?(\d{4}-\d{2}-\d{2})(?=\s|$)/u;
 const RE_REPETIR = /(^|\s)↻\s?([\p{L}\d]+)(?=\s|$)/u;
 // Compatibilidad con Tasks

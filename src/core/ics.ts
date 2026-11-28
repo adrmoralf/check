@@ -1,7 +1,7 @@
 // Calendario .ics de las tareas pendientes con fecha, para publicarlo en el Gist al que
 // está suscrito Google Calendar (sustituye al plugin iCal de Obsidian).
 
-import { TareaIdx, pendiente } from "./consultas";
+import { TareaIdx } from "./consultas";
 import { sumarDias } from "./fechas";
 import { PRIORIDAD_NOMBRE } from "./tarea";
 
@@ -46,7 +46,8 @@ export function generarIcs(tareas: TareaIdx[], nombreAsignatura: (tag: string) =
   const ev: string[] = [];
   const vistos = new Set<string>();
   for (const t of tareas) {
-    if (!pendiente(t) || !t.fecha) continue;
+    // Los exámenes que ya pasaron se quedan en el calendario (no hace falta marcarlos)
+    if (t.hecha || t.cancelada || !t.fecha) continue;
     let id = uid(t);
     while (vistos.has(id)) id = "x" + id;
     vistos.add(id);

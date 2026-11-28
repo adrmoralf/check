@@ -5,7 +5,8 @@ import { parsearRapido } from "../src/core/rapido";
 import { archivar } from "../src/core/archivo";
 import { fusionar } from "../src/core/fusion";
 import { CURSO_INICIAL } from "../src/ajustes";
-import { tipoDe } from "../src/core/entregas";
+import { examenPasado, tipoDe } from "../src/core/entregas";
+import { progresoPorTag } from "../src/core/consultas";
 
 const HOY = "2026-11-23"; // lunes
 const ASIG = CURSO_INICIAL.asignaturas;
@@ -27,6 +28,28 @@ describe("tipo de tarea", () => {
     expect(tipoDe({ descripcion: "Examen parcial", prioridad: 2, tipo: null }, 4)).toBe("examen");
     expect(tipoDe({ descripcion: "Práctica 2", prioridad: 2 }, 4)).toBe("practica");
     expect(tipoDe({ descripcion: "Entregar la práctica 2", prioridad: 2 }, 4)).toBe("entrega");
+  });
+  it("lee +avance y la línea rápida también lo entiende", () => {
+    const t = parsearTarea("- [ ] Repasar el tema 3 #CI @2026-12-01 +avance")!;
+    expect(t.tipo).toBe("avance");
+    expect(t.descripcion).toBe("Repasar el tema 3");
+    expect(tipoDe(t, 4)).toBe("avance");
+    expect(parsearRapido("repasar tema 3 CI viernes +avance", HOY, ASIG).tipo).toBe("avance");
+  });
+  it("un examen pasado cuenta como hecho sin marcarlo", () => {
+    const [examen, entrega, cuadro] = tareasDelDocumento("t.md", [
+      "- [ ] Examen de PA #PA @2026-11-20",
+      "- [ ] Memoria #PA @2026-11-20 +entrega",
+      "- [ ] Cuadro eléctrico del circuito de control #PA @2026-11-20",
+    ].join("\n"));
+    expect(examenPasado(examen, HOY)).toBe(true);
+    expect(examenPasado(examen, "2026-11-20")).toBe(false); // el mismo día aún no
+    expect(examenPasado(entrega, HOY)).toBe(false);
+    // «control» ya no se toma por examen (escondería una tarea atrasada)
+    expect(examenPasado(cuadro, HOY)).toBe(false);
+    expect(tipoDe({ descripcion: "Estudiar para el examen", prioridad: 4 }, 4)).toBe("importante");
+    expect(tipoDe({ descripcion: "Práctica 2, tras el parcialito", prioridad: 2 }, 4)).toBe("practica");
+    expect(progresoPorTag([examen, entrega], HOY).get("PA")).toMatchObject({ hechas: 1, total: 2 });
   });
   it("la línea rápida entiende +entrega", () => {
     const r = parsearRapido("memoria RIS mañana +entrega", HOY, ASIG);

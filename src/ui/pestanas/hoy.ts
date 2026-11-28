@@ -82,7 +82,13 @@ const PX_POR_DIA = 7;
  */
 function proximas(ctx: Contexto, el: HTMLElement) {
   const { p, hoy, tareas } = ctx;
-  const items = ordenar(tareas.filter((t) => pendiente(t) && t.fecha && t.fecha > hoy && tipoDe(t, p.ajustes.prioridadImportante)));
+  // Los avances no entran: aquí solo lo que tiene un plazo de verdad
+  const items = ordenar(
+    tareas.filter((t) => {
+      const tipo = pendiente(t) && t.fecha && t.fecha > hoy ? tipoDe(t, p.ajustes.prioridadImportante) : null;
+      return tipo !== null && tipo !== "avance";
+    }),
+  );
   titulo(el, "Próximas entregas");
   if (!items.length) {
     el.createDiv({ cls: "tabla-vacia", text: "Nada importante a la vista." });

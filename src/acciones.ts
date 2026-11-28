@@ -8,7 +8,7 @@ import { archivar } from "./core/archivo";
 import { TareaIdx, notasDe } from "./core/consultas";
 import { ISO, fechaCorta, hoyISO } from "./core/fechas";
 import { ResultadoFusion, fusionar } from "./core/fusion";
-import { insertarEnSeccion, insertarSubtarea } from "./core/insertar";
+import { insertarEnSeccion, insertarSubtarea, moverBloque } from "./core/insertar";
 import { NuevaTarea, alternarHecha, cambiarFecha, cambiarPrioridad, lineaSiguiente, parsearTarea, reescribirLinea } from "./core/tarea";
 
 interface Cambio {
@@ -94,19 +94,39 @@ export class Acciones {
     this.avisoDeshacer("Prioridad cambiada.", c);
   }
 
-  /** Reescribe la línea y, si se pasan, sustituye sus notas (las líneas con sangría de debajo). */
-  async editar(t: TareaIdx, datos: NuevaTarea, notas?: string[]) {
-    const c = await this.cambiar(
-      t,
-      (ls) => 1 + (notas ? notasDe(ls, t.linea).length : 0),
-      ([l]) => {
-        const linea = reescribirLinea(l, datos);
-        if (!notas) return [linea];
-        const sangria = (l.match(/^\s*/)?.[0] ?? "") + "  ";
-        return [linea, ...notas.map((n) => n.trim()).filter(Boolean).map((n) => sangria + n)];
-      },
-    );
-    this.avisoDeshacer("Tarea editada.", c);
+  /**
+   * Reescribe la línea y, si se pasan, sustituye sus notas (las líneas con sangría de debajo).
+   * Con `mover`, además la lleva (con sus subtareas y notas) bajo otra tarea o, si `padre` es
+   * null, a la sección indicada como tarea suelta.
+   */
+  async editar(t: TareaIdx, datos: NuevaTarea, notas?: string[], mover?: { padre: TareaIdx | null; seccion: string }) {
+    const bloque = (ls: string[]) => 1 + (notas ? notasDe(ls, t.linea).length : 0);
+    const reescribir = ([l]: string[]) => {
+      const linea = reescribirLinea(l, datos);
+      if (!notas) return [linea];
+      const sangria = (l.match(/^\s*/)?.[0] ?? "") + "  ";
+      return [linea, ...notas.map((n) => n.trim()).filter(Boolean).map((n) => sangria + n)];
+    };
+    if (!mover) {
+      this.avisoDeshacer("Tarea editada.", await this.cambiar(t, bloque, reescribir));
+      return;
+    }
+    const contenido = await this.a.leer();
+    const eol = contenido.includes("\r\n") ? "\r\n" : "\n";
+    const antes = contenido.split(/\r?\n/);
+    if (antes[t.linea] !== t.texto || (mover.padre && antes[mover.padre.linea] !== mover.padre.texto)) {
+      new Notice("La tarea ha cambiado en el archivo (quizá desde otro PC). Se ha recargado: vuelve a intentarlo.");
+      await this.a.recargar(contenido);
+      return;
+    }
+    const ls = [...antes];
+    const n = bloque(ls);
+    ls.splice(t.linea, n, ...reescribir(ls.slice(t.linea, t.linea + n)));
+    const r = moverBloque(ls.join(eol), t.linea, mover.padre ? { padre: mover.padre.linea } : { seccion: mover.seccion });
+    await this.a.guardar(r.contenido);
+    // Deshacer devuelve el archivo entero a como estaba (si nadie lo ha tocado después)
+    const despues = r.contenido.split(/\r?\n/);
+    this.avisoDeshacer(mover.padre ? `Tarea editada y movida bajo «${mover.padre.descripcion}».` : "Tarea editada y movida.", { linea: 0, antes, despues });
   }
 
   /** Ruta del archivo de tareas archivadas: junto al principal, «Tareas-archivo.md». */

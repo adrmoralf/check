@@ -5,6 +5,7 @@
 import { setIcon } from "obsidian";
 import type PanelTareasPlugin from "../main";
 import { TareaIdx, clave, subtareas } from "../core/consultas";
+import { examenPasado } from "../core/entregas";
 import { DIAS_CORTOS, ISO, diaSemana, diasEntre } from "../core/fechas";
 import { describirRegla, textoPlano } from "../core/tarea";
 import { abrirUrl } from "../backend";
@@ -17,6 +18,8 @@ export interface OpcionesFila {
   /** Mostrar la fecha en su columna (en Calendario el día ya se sabe) */
   mostrarFecha?: boolean;
   todas: TareaIdx[];
+  /** La fila va justo debajo de su tarea principal: no hace falta decir de cuál es */
+  bajoSuPadre?: boolean;
 }
 
 // El golpe del sello: la tarea recién marcada se estampa al repintarse (la fila es nueva tras guardar)
@@ -65,18 +68,21 @@ function icono(el: HTMLElement, nombre: string, texto: string, etiqueta?: string
 export function fila(p: PanelTareasPlugin, el: HTMLElement, t: TareaIdx, o: OpcionesFila): HTMLElement {
   const f = el.createDiv({ cls: "fila", attr: { tabindex: "0", draggable: "true", role: "row" } });
   f.style.setProperty("--tarea-color", p.color(t.tags[0]));
-  if (t.hecha) f.addClass("fila-hecha");
+  // Un examen que ya pasó se da por hecho aunque no se haya marcado
+  const pasado = examenPasado(t, o.hoy);
+  const hecha = t.hecha || pasado;
+  if (hecha) f.addClass("fila-hecha");
   if (t.cancelada) f.addClass("fila-anulada");
   if (t.padre !== null) f.addClass("fila-sub");
-  const atrasada = !t.hecha && !t.cancelada && t.fecha !== null && t.fecha < o.hoy;
+  const atrasada = !hecha && !t.cancelada && t.fecha !== null && t.fecha < o.hoy;
   if (atrasada) f.addClass("fila-atrasada");
 
   // Casilla
   const check = f.createEl("button", {
     cls: "casilla",
-    attr: { type: "button", role: "checkbox", "aria-checked": String(t.hecha), "aria-label": t.hecha ? "Reabrir la tarea" : "Marcar como hecha" },
+    attr: { type: "button", role: "checkbox", "aria-checked": String(hecha), "aria-label": t.hecha ? "Reabrir la tarea" : pasado ? "Examen pasado (ya cuenta como hecho)" : "Marcar como hecha" },
   });
-  if (t.hecha) setIcon(check, "check");
+  if (hecha) setIcon(check, "check");
   check.addEventListener("click", (e) => {
     e.stopPropagation();
     if (!t.hecha) recienSellada = { k: identidad(t), t: Date.now() };
@@ -95,6 +101,10 @@ export function fila(p: PanelTareasPlugin, el: HTMLElement, t: TareaIdx, o: Opci
   const cuerpo = f.createDiv({ cls: "col-tarea" });
   cuerpo.createDiv({ cls: "fila-desc", text: t.descripcion || "(sin descripción)" });
   const meta = cuerpo.createDiv({ cls: "fila-meta" });
+  if (t.padre !== null && !o.bajoSuPadre) {
+    const padre = o.todas.find((x) => x.path === t.path && x.linea === t.padre);
+    if (padre) icono(meta, "corner-down-right", padre.descripcion, "Subtarea de").addClass("meta-padre");
+  }
   for (const tag of t.tags.slice(1)) pastillaTag(p, meta, tag);
   if (t.prioridad >= 3) {
     const nombre = t.prioridad === 5 ? "máxima" : t.prioridad === 4 ? "alta" : "media";
@@ -118,7 +128,8 @@ export function fila(p: PanelTareasPlugin, el: HTMLElement, t: TareaIdx, o: Opci
 
   // Plazo o sello
   const col = f.createSpan({ cls: "col-plazo" });
-  if (t.hecha) {
+  if (pasado) sello(col, "HECHO", "azul").setAttr("title", "El examen ya pasó: cuenta como hecho sin marcarlo");
+  else if (t.hecha) {
     const s = sello(col, "HECHO", "azul");
     if (recienSellada && recienSellada.k === identidad(t) && Date.now() - recienSellada.t < 4000) {
       s.addClass("sello-golpe");

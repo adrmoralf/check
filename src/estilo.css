@@ -296,6 +296,8 @@ input[type="checkbox"] { accent-color: var(--interactive-accent); width: 16px; h
 .fila-meta:empty { display: none; }
 .meta-item { display: inline-flex; align-items: center; gap: 4px; }
 .meta-icono .svg-icon { width: 13px; height: 13px; }
+.meta-padre { max-width: 100%; color: var(--tinta-3); }
+.meta-padre > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .prio-4, .prio-5 { color: var(--sello-rojo); font-weight: 650; }
 .meta-boton { height: auto; padding: 0; border: none; background: none; font-size: 1em; font-weight: 500; color: var(--tinta-2); text-decoration: underline; text-underline-offset: 3px; }
 .meta-boton:hover { background: none; color: var(--tinta); }
@@ -373,15 +375,32 @@ input[type="checkbox"] { accent-color: var(--interactive-accent); width: 16px; h
 .hito-pie { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 4px; font-size: 0.78em; color: var(--tinta-2); font-variant-numeric: tabular-nums; }
 
 /* ---------------------------------------------------------------- Inicio */
-.eje { padding: 18px 0 10px; }
-.eje-pista { position: relative; height: 2px; margin: 14px 7px 12px; background: var(--tinta); }
-.eje-examenes { position: absolute; top: -6px; bottom: -6px; background: repeating-linear-gradient(-45deg, var(--trama) 0 1px, transparent 1px 6px); }
-.eje-marca { position: absolute; top: 50%; width: 13px; height: 13px; padding: 0; border: 2px solid var(--tarea-color); border-radius: 0; background: var(--papel); transform: translate(-50%, -50%); transition: transform 120ms ease-out; }
-.eje-examen { background: var(--tarea-color); transform: translate(-50%, -50%) rotate(45deg); }
-.eje-marca:hover { background: var(--tarea-color); transform: translate(-50%, -50%) scale(1.35); }
-.eje-examen:hover { transform: translate(-50%, -50%) rotate(45deg) scale(1.35); }
-.eje-etiquetas { position: relative; display: flex; justify-content: space-between; font-size: 0.76em; color: var(--tinta-2); font-variant-numeric: tabular-nums; }
-.eje-fin-clases { position: absolute; transform: translateX(-50%); }
+.semanas-caja { margin: 14px 0 6px; }
+.semanas { display: grid; grid-template-columns: repeat(var(--n-semanas), minmax(58px, 1fr)); border: 1px solid var(--tinta); border-radius: var(--radio); overflow-x: auto; background: var(--blanco); }
+.semana { display: flex; flex-direction: column; min-width: 0; border-left: 1px solid var(--filete); }
+.semana:first-child { border-left: none; }
+.semana-examenes { background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--tinta) 7%, transparent) 0 1px, transparent 1px 7px); }
+.semana-cab { display: flex; align-items: baseline; justify-content: center; gap: 4px; height: auto; padding: 7px 4px 6px; border: none; border-bottom: 1px solid var(--filete); border-radius: 0; background: none; color: var(--tinta-2); font-variant-numeric: tabular-nums; }
+.semana-cab:not(:disabled):hover { background: var(--resalte); color: var(--tinta); }
+.semana-cab:disabled { cursor: default; opacity: 1; }
+.semana-dia { font-size: 1.05em; font-weight: 750; }
+.semana-mes { font-size: 0.72em; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+.semana-actual .semana-cab { background: var(--interactive-accent); color: var(--text-on-accent); }
+.semana-marcas { display: flex; flex-direction: column; gap: 4px; min-height: 64px; padding: 6px 5px 8px; }
+.semana-marca { display: flex; align-items: center; justify-content: space-between; gap: 4px; width: 100%; height: 22px; padding: 0 5px; border: 1.5px solid var(--tarea-color); border-radius: var(--radio); background: color-mix(in srgb, var(--tarea-color) 9%, var(--blanco)); color: var(--tinta); font-size: 0.7em; font-weight: 700; font-variant-numeric: tabular-nums; }
+.semana-marca:hover { background: color-mix(in srgb, var(--tarea-color) 22%, var(--blanco)); }
+.semana-marca-tipo { font-weight: 800; }
+.semana-marca-tag { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tinta-2); }
+.marca-examen { background: var(--tarea-color); color: #ffffff; }
+.marca-examen .semana-marca-tag { color: color-mix(in srgb, #ffffff 82%, var(--tarea-color)); }
+.marca-examen:hover { background: color-mix(in srgb, var(--tarea-color) 82%, #000000); }
+.marca-avance { border-style: dashed; border-width: 1px; background: transparent; color: var(--tinta-2); font-weight: 600; }
+.semanas-leyenda { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; font-size: 0.75em; color: var(--tinta-2); }
+.semanas-leyenda-item { display: inline-flex; align-items: center; gap: 6px; }
+.semanas-leyenda-muestra { display: inline-block; width: 16px; height: 10px; border: 1.5px solid var(--tinta-2); border-radius: 1px; --tarea-color: var(--tinta-2); }
+.semanas-leyenda-muestra.marca-entrega { background: transparent; }
+.semanas-leyenda-muestra.marca-avance { border-width: 1px; }
+.semanas-leyenda-muestra.muestra-examenes { border-color: var(--filete); background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--tinta) 30%, transparent) 0 1px, transparent 1px 4px); }
 .registro { display: flex; flex-direction: column; margin-top: 8px; }
 .registro-fila {
   display: grid;
@@ -392,7 +411,23 @@ input[type="checkbox"] { accent-color: var(--interactive-accent); width: 16px; h
   padding: 8px 6px;
   border-bottom: 1px solid var(--filete);
 }
-.registro-hueco { display: flex; align-items: center; padding-left: 92px; border-left: 1px dashed var(--borde-campo); margin-left: 86px; font-size: 0.74em; color: var(--tinta-3); font-variant-numeric: tabular-nums; }
+.registro-semana { display: flex; align-items: baseline; gap: 8px; padding: 18px 6px 6px; border-bottom: 1px solid var(--tinta); font-size: 0.78em; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tinta); scroll-margin-top: 12px; }
+.registro-semana .grupo-n { letter-spacing: 0; }
+.registro-semana-atrasada { color: var(--sello-rojo); border-bottom-color: var(--sello-rojo); }
+.registro-cabecera + .registro-semana { padding-top: 10px; }
+.registro-padre { display: flex; align-items: center; gap: 4px; margin-top: 2px; font-size: 0.8em; font-weight: 500; color: var(--tinta-2); }
+.registro-progreso { margin-left: 8px; padding: 0 5px; border: 1px solid var(--borde-campo); border-radius: var(--radio); font-size: 0.75em; font-weight: 650; color: var(--tinta-2); font-variant-numeric: tabular-nums; }
+.registro-subs { display: flex; flex-direction: column; margin-left: 40px; padding: 2px 0 8px 14px; border-left: 1px solid var(--borde-campo); border-bottom: 1px solid var(--filete); }
+.registro-sub { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 10px; align-items: center; min-height: 30px; padding: 2px 6px; cursor: pointer; font-size: 0.9em; }
+.registro-sub:hover { background: var(--resalte); }
+.registro-sub .casilla { width: 16px; height: 16px; }
+.registro-sub-desc { overflow-wrap: anywhere; }
+.registro-sub-fecha { font-size: 0.85em; font-weight: 650; color: var(--tinta-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.registro-sub-fecha.tarde { color: var(--sello-rojo); }
+.registro-sub.registro-hecha .registro-sub-desc { color: var(--tinta-3); text-decoration: line-through; }
+.registro-fila:has(+ .registro-subs) { border-bottom-color: transparent; }
+.registro-avance .registro-desc { font-weight: 450; color: var(--tinta-2); }
+.registro-avance .registro-n { font-size: 1.2em; font-weight: 700; color: var(--tinta-2); }
 .registro-fila[tabindex] { cursor: pointer; }
 .registro-fila[tabindex]:hover { background: var(--resalte); }
 .registro-cabecera { min-height: 0; padding: 6px; border-bottom: 1px solid var(--tinta); font-size: 0.72em; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tinta-2); }
@@ -409,6 +444,7 @@ input[type="checkbox"] { accent-color: var(--interactive-accent); width: 16px; h
 .registro-hecha .registro-desc { color: var(--tinta-3); text-decoration: line-through; }
 .tipo { display: inline-block; padding: 1px 7px; border: 1px solid var(--tinta-2); border-radius: var(--radio); font-size: 0.7em; font-weight: 750; letter-spacing: 0.1em; color: var(--tinta-2); }
 .tipo-examen { border: 1.5px solid var(--tinta); color: var(--tinta); }
+.tipo-avance { border-style: dashed; border-color: var(--tinta-3); color: var(--tinta-3); font-weight: 650; }
 
 /* ---------------------------------------------------------------- Asignaturas */
 .asignaturas { display: flex; flex-direction: column; }
@@ -584,7 +620,7 @@ input[type="checkbox"] { accent-color: var(--interactive-accent); width: 16px; h
 .panel-tareas:not(.pt-ancho) .registro-hora { display: block; margin-left: 0; }
 .panel-tareas:not(.pt-ancho) .registro-hora::before { content: none; }
 .panel-tareas:not(.pt-ancho) .registro-u { display: block; margin: 0; }
-.panel-tareas:not(.pt-ancho) .registro-hueco { margin-left: 58px; padding-left: 50px; }
+.panel-tareas:not(.pt-ancho) .registro-subs { margin-left: 14px; }
 .panel-tareas:not(.pt-ancho) .registro-desc { grid-column: 2 / -1; }
 .panel-tareas:not(.pt-ancho) .registro-cabecera { display: none; }
 .panel-tareas:not(.pt-ancho) .asig-fila { grid-template-columns: minmax(0, 1fr) 64px 32px; }
@@ -610,7 +646,7 @@ input[type="checkbox"] { accent-color: var(--interactive-accent); width: 16px; h
 
 /* Estrecho: la tabla manda; cabecera y herramientas en lo mínimo */
 .panel-tareas:not(.pt-ancho) .hoja-datos > div:not(:first-child):not(.clases):not(.cuatri-avance):not(.cal-nav) { display: none; }
-.panel-tareas:not(.pt-ancho) .eje { display: none; }
+.panel-tareas:not(.pt-ancho) .semanas-leyenda { display: none; }
 .panel-tareas:not(.pt-ancho) .hoja-herramientas { margin-top: 12px; }
 .panel-tareas:not(.pt-ancho) .hoja-buscar input, .panel-tareas:not(.pt-ancho) .boton-secundario { height: 38px; }
 .panel-tareas:not(.pt-ancho) .boton-secundario span:last-child { display: none; }
